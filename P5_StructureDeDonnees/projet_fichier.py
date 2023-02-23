@@ -185,9 +185,85 @@ while booleen:
                     donnees.append(dict)
             
             # afficher les données sous forme de liste de dictionnaires
-            print(donnees)
+            #print(donnees)
 
-
+            for etudiant in donnees:
+                #etudiant=[code,numero,nom,prenom,date_naissance,classe,note]
+                cpt=0
+                # Vérification de la validité de numéro etudiant
+                if numero_etudiant(etudiant["Numero"])==True:
+                    cpt+=1
+                else:
+                    etudiant["Motif"]='Numéro invalide'
+                    #donnees_invalides.append(etudiant)
+                    # Vérification de la validité de nom etudiant
+                if nom_etudiant(etudiant["Nom"])==True:
+                    cpt+=1
+                else:
+                    etudiant["Motif"]="Nom invalide"
+                    #donnees_invalides.append(etudiant)
+                    # Vérification de la validité de prénom etudiant
+                if prenom_etudiant(etudiant["Prénom"])==True:
+                    cpt+=1
+                else:
+                    etudiant["Motif"]="Prénom invalide"
+                    #donnees_invalides.append(etudiant)
+                    # Vérification de la validité de la date de naissance de etudiant
+                if date_naissance_etudiant(etudiant["Date de naissance"])==True:
+                    cpt+=1
+                else: 
+                    etudiant["Motif"]="Date de naissance invalide"
+                    #donnees_invalides.append(etudiant)
+                    # Vérification de la validité de classe etudiant
+                if classe_etudiant(etudiant["Classe"])==True:
+                    cpt+=1
+                else:
+                    etudiant["Motif"]="Classe invalide"
+                    #donnees_invalides.append(etudiant)
+                    # Vérification de la validité de note etudiant
+                if note_etudiant(etudiant["Note"])==True:
+                    cpt+=1
+                else:
+                    etudiant["Motif"]="Note invalide"
+                    #donnees_invalides.append(etudiant)
+                        # Si toutes les données sont valides, on ajoute les données à la liste des données valides
+                if cpt==(len(etudiant)-1):
+                    donnees_valides.append(etudiant)
+                else:
+                    donnees_invalides.append(etudiant)
+            print("Les donnees invalide sont: \n",donnees_invalides)
+            print(len(donnees_invalides))
+            print("Les donnees valide sont: \n",donnees_valides)
+            print(len(donnees_valides))
+        
+            
+            choice=True
+            while choice:
+                print()
+                print(100*'-')
+                print(30*' ',"⏩ ⏩ ⏩ ⏩ ⏩   MENU   ⏪ ⏪ ⏪ ⏪ ⏪ ")
+                print(100*'-')
+                menu=affichage_menu()
+                print(affichage_menu)
+                print(100*'-')
+                print()
+                
+                choix=input("Vous voulez transformer les données valides en XML ou en CSV: ")
+                if choix=='XML':
+                    print("Afficher les informations Valide en XML")
+                    chemin_fich_xml = "Donnees_validesJ_Python_DataC5.xml"
+                    liste_xml(donnees_valides,chemin_fich_xml)
+                    print()
+                    print("Afficher les informations Invalide en CSV")
+                    chemin_fich_csv = "Donnees_invalidesJ_Python_DataC5.csv"
+                    liste_csv(donnees_invalides, chemin_fich_csv)
+        #         elif choix=='CSV':
+        #             print("Afficher les informations Valide en CSV")
+        #             chemin_fich_csv = "Donnees_valides_Python_DataC5.csv"
+        #             liste_csv(donnees_valides, chemin_fich_csv)
+        #             print("Afficher les informations Invalide en XML")
+        #             chemin_fich_xml = "Donnees_invalides_Python_DataC5.xml"
+        #             liste_xml(donnees_invalides,chemin_fich_xml)
 
 
 
