@@ -1,0 +1,699 @@
+                     Partie 2 : Structures Conditionnelles
+                   ------------------------------------------
+EXO1:
+-----
+Algorithm Resistance;
+v:reel
+R1:reel
+R2:reel
+R3:reel
+Debut
+	Ecrire ('Donner 3 resistances:')
+	lire R1, R2, R3
+	Ecrire ('Donne ton choix:')
+	lire v
+	si v==1 alors
+		Ecrire ('La resistance en serie est: ',R1+R2+R3)
+	sinon
+		Ecrire ('La resistance en parallele est: ',(R1 * R2 * R3) / (R1*R2 + R2*R3 + R1*R3))
+Fin
+
+-----------------------------------------------------------------------
+EXO2:
+-----
+Algorithm Calculatrice;
+a:entier
+b:entier
+c:caractère
+Debut
+	Ecrire ('Donner deux entiers a et b:')
+	lire a,b
+	Ecrire ('Donner un operateur:')
+	lire c
+	si c==+ alors
+		Ecrire ('On a une addition: ',a+b)
+	si c==- alors
+		Ecrire ('On a une soustraction: ',a-b)
+	si c=* alors
+		Ecrire ('On a une multiplication: ',a*b)
+	si c==/ alors
+		Ecrire ('On a une division: ',a/b)
+Fin
+
+---------------------------------------------------------------------------
+
+EXO3:
+-----
+Algorithm equation_premier_degre;
+a:reel
+b:reel
+Debut
+	Ecrire ('Donner deux entiers a et b: ')
+	lire a,b
+	si a=!0 alors
+		Ecrire ('On a une equation du premier degre: ',a,'x+','b=0')
+		x=(-b/a)
+		Ecrire ('On a une seule solution: ',x)
+	sinon
+		Ecrire ('On a pas une equation du premier degre.')
+Fin
+
+---------------------------------------------------------------------------------
+
+EXO4:
+-----
+Algorithm equation_second_degre;
+a:reel
+b:reel
+c:reel
+Debut
+	Ecrire ('Donner deux entiers a, b et c: ')
+	lire a,b,c
+	si a=0 alors
+		si b==0 alors
+			Ecrire ('On a pas une equation.')
+		sinon
+			Ecrire ('On a une equation du premier degre: ',b,'x+','c=0')
+			x=(-c/b)
+			Ecrire ('On a une seule solution: ',x)
+	sinon
+		Ecrire ('On a une equation du second degre: ',a,'x²+',b,'x+','c=0')
+		del=(b^2)-(4*a*c);
+		x1=(-b-racine(del))/(2*a);
+		x2=(b-racine(del))/(2*a);
+		Ecrire ('On a deux solutions: 'x1=',x1,', x2=',x2)
+Fin
+
+---------------------------------------------------------------------------------------
+
+EXO5:
+-----
+Algorithm si_imbriquée;
+c=entier
+Debut
+	Ecrire ('Donner un entier entre 1 et 7:')
+	lire c
+	si c=1 alors
+		Ecrire ('Correspond à Lundi.')
+		sinon si c=2 alors
+			Ecrire ('Correspond à Mardi.')
+			sinon si c=3 alors
+				Ecrire ('Correspond à Mercredi.')
+				sionon si c=4 alors
+					Ecrire ('Correspond à Jeudi.')
+					sinon si c=5 alors
+						Ecrire ('Correspond à Vendredi.')
+						sinon si c=6 alors
+							Ecrire ('Correspond à Samedi.')
+							sinon si c=7 alors
+								Ecrire ('Correspond à Dimanche.')
+	sinon
+		Ecrire ('Entrer un nombre qui correspond.')
+Fin
+	
+              -----------------------------------------------		
+Algorithm  primitive_cas
+chiffre	=entier
+Debut
+	Ecrire ('Donner un entier entre 1 et 7:')
+	lire chiffre	
+	cas chiffre	
+		1: Ecrire ('Lundi')
+		2: Ecrire ('Mardi')
+		3: Ecrire ('Mercredi')
+		4: Ecrire ('jeudi')
+		5: Ecrire ('Vendredi')
+		6: Ecrire ('Samedi')
+		7: Ecrire ('Dimanche')	sinon
+		Ecrire ('Ne correspond pas.')
+Fin
+
+-----------------------------------------------------------------
+
+EXO6:
+-----
+Algorithm Décomposition;
+mnt=entier
+Debut
+	Ecrire ('Donner un montant en euro:')
+	lire mnt
+	Ecrire ('Le nombre de billets de 20 est:',mnt/20)
+	Ecrire ('Le nombre de billets de 10 est: ',(mnt mod 20)/10)
+	Ecrire ('Le nombre de billets de 5 est: ',((mnt mod 20)mod10)/5)
+	Ecrire ('le nombre de pieces de 2 est: ',(((mnt mod 20)mod10)mod5)/2)
+	Ecrire ('le nombre de pieces de 1 est: ',(((mnt mod 20)mod10)mod5)mod2)
+Fin
+
+-----------------------------------------------------------------------------------------
+
+EXO7:
+-----
+Algorithm croissants_decroissant2;
+A:entier
+B:entier
+Debut
+	Ecrire ('Donner deux entier A et B:')
+	lire A,B
+	si A>B alors
+		Ecrire ('Dans l_ordre croissant on a: ',A,', ',B)
+	sinon
+		Ecrire ('Dans l_ordre decroissant on a: ',B,', ',A)
+Fin
+
+--------------------------------------------------------------------------------------
+
+EXO8:
+-----
+Algorithm croissants_decroissant3;
+A:entier
+B:entier
+C:entier
+Debut
+	Ecrire ('Donner deux entier A, B et C:')
+	lire A,B,C
+	si A>B>c alors
+		Ecrire ('Dans l_ordre croissant on a: ',C,', ',B,' ,',A)
+		Ecrire ('Dans l_ordre decroissant on a: ',A,', ',B,' ,',C')
+	sinon
+		Ecrire ('Dans l_ordre croissant on a: ',A,', ',B,' ,',C)
+		Ecrire ('Dans l_ordre decroissant on a: ',C,', ',B,' ,',A)
+	si A>C>B alors
+		Ecrire ('Dans l_ordre croissant on a: ',B,', ',C,' ,',A)
+		Ecrire ('Dans l_ordre decroissant on a: ',A,', ',C,' ,',B)
+	sinon
+		Ecrire ('Dans l_ordre croissant on a: ',A,', ',C,' ,',B)
+		Ecrire ('Dans l_ordre decroissant on a: ',B,', ',C,' ,',A)
+	si B>A>C alors
+		Ecrire ('Dans l_ordre croissant on a: ',C,', ',A,' ,',B)
+		Ecrire ('Dans l_ordre decroissant on a: ',B,', ',A,' ,',C)
+	sinon
+		Ecrire ('Dans l_ordre croissant on a: ',B,', ',A,' ,',C)
+		Ecrire ('Dans l_ordre decroissant on a: ',C,', ',A,' ,',B)
+	si B>C>A alors
+		Ecrire ('Dans l_ordre croissant on a: ',A,', ',C,' ,',B)
+		Ecrire ('Dans l_ordre decroissant on a: ',B,', ',C,' ,',A)
+	sinon
+		Ecrire ('Dans l_ordre croissant on a: ',B,', ',C,' ,',A)
+		Ecrire ('Dans l_ordre decroissant on a: ',A,', ',C,' ,',B)
+	si C>A>B alors
+		Ecrire ('Dans l_ordre croissant on a: ',B,', ',A,' ,',C)
+		Ecrire ('Dans l_ordre decroissant on a: ',C,', ',A,' ,',B)
+	sinon
+		Ecrire ('Dans l_ordre croissant on a: ',C,', ',A,' ,',B)
+		Ecrire ('Dans l_ordre decroissant on a: ',B,', ',A,' ,',C)
+	si C>B>A alors
+		Ecrire ('Dans l_ordre croissant on a: ',A,', ',B,' ,',C)
+		Ecrire ('Dans l_ordre decroissant on a: ',C,', ',B,' ,',A)
+	sinon
+		Ecrire ('Dans l_ordre croissant on a: ',C,', ',B,' ,',A)
+		Ecrire ('Dans l_ordre decroissant on a: ',A,', ',B,' ,',C)
+Fin
+	
+----------------------------------------------------------------------------------------
+
+EXO9:
+-----
+
+
+----------------------------------------------------------------------------------------
+
+EXO10:
+------
+Algorithme annee_bissextile;
+annee=entier
+Debut
+	Ecrire ('Donner une annee:')
+	lire annee
+	si annee<1
+		Ecrire ('L_annee est invalide.')
+	si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+		Ecrire ('L_annee',annee,'est bissextile.')
+	sinon
+		Ecrire ('L_annee',annee,'n_est pas bissextile.')
+Fin
+
+-------------------------------------------------------------------------------------------
+
+EXO11:
+------
+Algorithme affichage_nbr_jours;
+annee:entier
+mois:entier
+Debut
+	Ecrire ('Donner une annee et un mois:')
+	lire annee,mois
+	si annee<1
+		Ecrire ('L_annee est invalide.')
+	sinon
+		si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+			Ecrire ('L_annee',annee,'est bissextile.')
+			si mois=2 alors
+				Ecrire ('En ',annee,'le 2eme mois est de 29 jours.')
+		sinon
+			Ecrire ('En ',annee,'le 2eme mois est de 28 jours.')
+		si mois=1 ou mois=3 ou mois=5 ou mois=7 ou mois=8 ou mois=10 ou mois=12 alors
+			Ecrire ('Le',mois,'eme mois est de 31 jous')
+			sinon si mois=4 ou mois=6 ou mois=9 ou mois=11 alors
+				Ecrire ('Le',mois,'eme mois est de 30 jous')
+		sinon
+			Ecrire ('Il n_a que 12 mois dans l_annee.')
+Fin
+
+------------------------------------------------------------------------------------------------
+EXO12:
+------
+Algorithme date_valide;
+jour:entier
+mois:entier
+annee:entier
+Debut
+	Ecrire ('Donner une date sous format jour, mois et annee: ')
+	lire jour,mois,annee
+	si 1<=jour<=31   # si jour est valide
+		Ecrire ('Le jour est valide.')
+		si 1<=mois<=12
+			Ecrire('Le mois est valide.')
+			si annee>1
+				Ecrire ('L_annee est valide.')
+				si mois=2
+					si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+						Ecrire ('Le 2eme mois est de 29 jours.')
+					sinon
+						Ecrire ('Le 2eme mois est de 28 jours.')
+				si mois=1 ou mois=3 ou mois=5 ou mois=7 ou mois=8 ou mois=10 ou mois=12 alors
+					Ecrire ('Le',mois,'eme mois est de 31 jous')
+				sinon 
+					Ecrire ('Le',mois,'eme mois est de 30 jous')
+					Ecrire ('Ecrire la date est valide: ',jour,'/',mois,'/',annee,'.')
+			sinon
+				Ecrire ('La date est invalide.')
+		sinon
+			Ecrire ('La date est invalide.')
+	sinon
+		Ecrire ('La date est invalide.')
+fin		
+
+---------------------------------------------------------------------------------------------------
+
+EXO13:
+------
+Algorithme date_suivante;
+jour:entier
+mois:entier
+annee:entier
+Debut
+	Ecrire ('Donner une date sous format jour, mois et annee: ')
+	lire jour,mois,annee
+	si 1<=jour<=31   # si jour est valide
+		Ecrire ('Le jour est valide.')
+		si 1<=mois<=12
+			Ecrire('Le mois est valide.')
+			si annee>1
+				Ecrire ('L_annee est valide.')		
+				si mois=2
+					si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+						Ecrire ('Le 2eme mois est de 29 jours.')
+						si jour=29 alors
+							jour=1;
+							mois=mois+1;
+							annee=annee;
+						Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+					sinon
+						Ecrire ('Le 2eme mois est de 28 jours.')
+						si jour=28 alors
+							jour=1;
+							mois=mois+1;
+							annee=annee;	
+						Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+				si mois=1 ou mois=3 ou mois=5 ou mois=7 ou mois=8 ou mois=10 ou mois=12 alors
+					Ecrire ('Le',mois,'eme mois est de 31 jous')
+					si mois=12 alors
+						sinon si jour=31 alors
+							jour=1;
+							mois=1;
+							annee= annee+1
+						Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+						sinon
+							jour=jour+1;
+							mois=12;
+							annee=annee;
+						Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+					si jour=31 et mois=!12 alors
+						jour=1;
+						mois=mois+1;
+						annee=annee;
+						Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')				
+				sinon 
+					Ecrire ('Le',mois,'eme mois est de 30 jous')
+					si jour=30 alors
+						jour=1;
+						mois=mois+1;
+						annee=annee;
+					Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+				si 1<=jour<30 et mois=!2 et mois=!12 alors
+					jour=jour+1;
+					mois= mois;
+					annee=annee;
+				Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')	
+			sinon
+				Ecrire ('La date est invalide.')
+		sinon
+			Ecrire ('La date est invalide.')
+	sinon
+		Ecrire ('La date est invalide.')
+Fin
+------------------------------------------------------------------------------------------------
+
+EXO14:
+------
+Algorithme date_précédente;
+commence par exo 12				
+Debut
+si mois=3 alors
+		si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+			Ecrire ('Le 2eme mois est de 29 jours.')
+			jours=29;
+			mois=mois-1;
+			annee=annee;
+		sinon
+			Ecrire ('Le 2eme mois est de 28 jours.')
+			jours=28;
+			mois=mois-1;
+			annee=annee;	
+		Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+	si jours=1 alors
+		sinon si mois=1 alors
+			jour=31;
+			mois=12;
+			annee= annee-1
+		Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+		sinon si mois=5 ou mois=7 ou mois=8 ou mois=10 ou mois=12 alors
+			jour=30;
+			mois=mois-1
+			annee=annee
+	Ecrire ('La date suivante est: ',jour,'/',mois,'/',annee,'.')
+Fin
+------------------------------------------------------------------------------------------------------
+
+EXO15:
+------
+Algorithme dans_5jours;
+jour:entier
+mois:entier
+annee:entier
+Debut
+	Ecrire ('Donner une date sous format jour, mois et annee: ')
+	lire jour,mois,annee
+	si 1<=jour<=31   # si jour est valide
+		Ecrire ('Le jour est valide.')
+		si 1<=mois<=12
+			Ecrire('Le mois est valide.')
+			si annee>1
+				Ecrire ('L_annee est valide.')
+				si mois=2
+					si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+						Ecrire ('Le 2eme mois est de 29 jours.')
+					sinon
+						Ecrire ('Le 2eme mois est de 28 jours.')
+				si mois=1 ou mois=3 ou mois=5 ou mois=7 ou mois=8 ou mois=10 ou mois=12 alors
+					Ecrire ('Le',mois,'eme mois est de 31 jous')
+				sinon 
+					Ecrire ('Le',mois,'eme mois est de 30 jous')
+					Ecrire ('Ecrire la date est valide: ',jour,'/',mois,'/',annee,'.')
+					si mois=1 ou mois=3 ou mois=5 ou mois=7 ou mois=8 ou mois=10 ou mois=12 alors
+						nbrjr=31;
+							si jour+5>31 alos
+								jour=(jour+5)-31;
+								mois=mois+1;
+								annee=annee;
+								si mois=13 alors
+									jour=jour;
+									mois=1;
+									annee=annee+1;
+								Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+							sinon
+								Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+				
+					sinon si mois=4 ou mois=6 ou mois=9 ou mois=11 alors
+						nbrjr=30;
+							si jour+5>30 alos
+								jour=(jour+5)-30;
+								mois=mois+1;
+								annee=annee;
+								Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+					sinon si mois=2 alors
+					si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors														nbrjr=29;
+						si jour+5>29 alos
+							jour=(jour+5)-29;
+							mois=mois+1;
+							annee=annee;
+							Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+					sinon
+						nbrjr=28;
+						si jour+5>28 alors
+							jour=(jour+5)-28;
+							mois=mois+1;
+							annee=annee;
+							Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+			sinon
+				Ecrire ('La date est invalide.')
+			fin si
+		sinon
+			Ecrire ('La date est invalide.')
+		fin si
+	sinon
+		Ecrire ('La date est invalide.')
+	fin si
+Fin	
+---------------------------------------------------------------------------------------------------
+
+EXO16:
+------
+Algorithme N_jours;
+jour:entier
+mois:entier
+annee:entier
+N:entier
+Debut
+	Ecrire ('Donner une date sous format jour, mois et annee: ')
+	lire jour,mois,annee
+	Ecrire ('Donner un nombre de jours: ')
+	lire N
+	si N<1 alors
+			Ecrire ('invalide')
+		sinon si jour<1 ou jour>31 alors
+			Ecrire ('invalide')
+		sinon si mois<1 ou mois>12 alors
+			Ecrire ('invalide')
+		sinon si annee<1 alors
+			Ecrire ('invalide')
+	si mois=2 alors
+		si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+			jr_mois=29;
+		sinon
+			jr_mois=28;
+	sinon si mois=4 ou mois=6 ou mois=9 ou mois=11 alors
+		jr_mois=30;
+	sinon
+		jr_mois=31;
+	si jour>jr_mois alors
+		Ecrire ('le jour est invalide.')
+	sinon
+		si jour-N<1 alors
+			si mois=1 alors
+				jour=nbr_jour+jour-N;
+				mois=31;
+				annee=annee-1
+				Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+		sinon 
+			jour=jr_mois+jour-N;
+			mois=mois-1;
+			annee=annee;
+		Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')	
+		sinon
+			jour=jour-N;
+			mois=mois;
+			annee=annee;
+		Ecrire ('La date dans 5 jour est: ',jour,'/',mois,'/',annee,'.')
+Fin
+
+----------------------------------------------------------------------------------
+
+EXO17:
+------
+Algorithme Abonnement;
+tarif_normal:entier
+qualite:chaine
+Debut
+	Ecrire ('Donner le prix de l_abonnement:')
+	lire tarif_normal
+	Ecrire ('Donner votre qualite d_abonne: ')
+	lire qualite	si qualite=ancien_abonne alors
+		prix_abonnement=tarif_normal-(tarif_normal*0.15);
+	sinon si qualite=etudiant alors
+		prix_abonnement=tarif_normal-(tarif_normal*0.2);
+	sinon si qualite=nouvel_etudiant alors
+		prix_abonnement=tarif_normal-(tarif_normal*0.00);
+	sinon si qualite=etrange alors
+		prix_abonnement=tarif_normal-(tarif_normal*0.25);
+	sinon
+		Ecrire ('Vous n_avez pas donner la bonne qualite d_abonne')
+	Ecrire ('Le prix d_abonnement de fait en fonction du tarif normal d_abonnement est: ',prix_abonnement)
+Fin
+
+----------------------------------------------------------------------------------
+
+EXO18:
+------
+Algorithme compare_dates;
+jour1:entier
+mois1:entier
+annee1:entier
+jour2:entier
+mois2:entier
+annee2:entier
+Début
+	Ecrire ('Donner une premiere date: ')
+	lire jour1,mois1,annee1
+	Ecrire ('Donner une deuxieme date: ')
+	lire jour2,mois2,annee2
+
+	si annee1>annee2 alors
+		Ecrire ('La date 1 est plus récente.')
+	sinon si annee1<annee2 alors
+		Ecrire ('La date 2 est plus récente.')
+	sinon 
+		Ecrire ('Les dates sont egales ont compare les mois.')
+
+		si mois1>mois2 alors
+ 			Ecrire ('La date 1 est plus récente.')
+		sinon si mois1<mois2 alors
+			Ecrire ('La date 2 est plus récente.')
+		sinon
+			Ecrire ('Les mois sont egales comparont les jours.')
+			si jour1>jour2 alors
+				Ecrire ('La date 1 est plus récente.')
+			sinon si jour1<jour2 alors
+				Ecrire ('La date 2 est plus récente.')
+			sinon
+				Ecrire ('Les dates sont égales')
+Fin
+
+----------------------------------------------------------------------------------
+
+EXO19:
+------
+Algorithme temps;
+val:entier
+Debut
+	Ecrire ('Donner une valeur entiere en second: ')
+	lire val
+	si val>0 alors
+		h=val div 3600;
+		min=(val mod 3600) div 60;
+		s=(val mod 3600) mod 60;
+		Ecrire ('Le nombre de seconde en heure, minutes et secondes est: ',h,'h',min,'min',sd,'sd.')
+Fin
+
+----------------------------------------------------------------------------------
+
+EXO20:
+------
+Algorithme personne;
+sexe:caractere
+t:entier
+p:entier
+Début	Ecrire ('Donner le sexe (M/F), la taille (cm), et le poids (kg) d_une personne.')
+	lire sexe,t,p
+	si sexe=M alors
+		Ecrire ('C_est une femme.')
+		PI= (t – 100) – (t – 150) / 4;
+		BMI=p/(t/100)^2;
+		si BMI <= 27 alors
+			Ecrire ('Le poids ideal de la personne est ',PI,'kg et son BMI indique que la personne est normale.')
+		sinon si BMI > 27 alors
+			Ecrire ('Le poids ideal de la personne est ',PI,'kg et son BMI indique que la personne est obese.')
+		sinon si BMI >= 32 alors
+			Ecrire ('Le poids ideal de la personne est ',PI,'kg et son BMI indique que la personne est malade.')
+Fin
+
+----------------------------------------------------------------------------------
+
+EXO21:
+------
+Algorithme divisible_unite;
+n:entier
+Debut
+	Ecrire ('Donner un nombre entier')
+	lire n
+	si (n mod 10)=!0 alors
+		si (n mod (n mod 10))=0 alors
+			Ecrire ('L_entier ',n,'est divisible par son chiffre d’unité.')
+		sinon
+			Ecrire ('L_entier ',n,'n_est pas divisible par son chiffre d’unité.')
+	sinon 
+		Ecrire ('On ne peut pas faire la division.')
+Fin
+
+----------------------------------------------------------------------------------
+
+EXO22:
+------
+Algorithme saison;
+m:entier
+Debut
+	Ecrire ('Donner un mois:')
+	lire m
+	si m=12 ou m=1 ou m=2 alors
+		Ecrire (' La saison correspondante est: hiver.')
+	sinon si m=3 ou m=4 ou m=5 alors
+		Ecrire ('La saison correspondante est: printemps.')
+	sinon si m=6 ou m=7 ou m=8 alors
+		Ecrire ('La saison correspondante est: été.')
+	sinon si m=9 ou m=10 ou m=11 alors
+		Ecrire ('La saison correspondante est: automne.')
+	sinon
+		Ecrire ('Le mois saisit n_est pas valide')
+Fin
+
+---------------------------------------------------------------------------------
+
+EXO23:
+------
+Algorithme date_recent;
+jour1:entier
+mois1:entier
+annee1:entier
+jour2:entier
+mois2:entier
+annee2:entier
+Début
+	Ecrire ('Donner une premiere date: ')
+	lire jour1,mois1,annee1
+	Ecrire ('Donner une deuxieme date: ')
+	lire jour2,mois2,annee2
+
+	si annee1>annee2 alors
+		Ecrire ('La date 1 est plus récente.')
+	sinon si annee1<annee2 alors
+		Ecrire ('La date 2 est plus récente.')
+	sinon 
+		Ecrire ('Les dates sont egales ont compare les mois.')
+
+		si mois1>mois2 alors
+ 			Ecrire ('La date 1 est plus récente.')
+		sinon si mois1<mois2 alors
+			Ecrire ('La date 2 est plus récente.')
+		sinon
+			Ecrire ('Les mois sont egales comparont les jours.')
+			si jour1>jour2 alors
+				Ecrire ('La date 1 est plus récente.')
+			sinon si jour1<jour2 alors
+				Ecrire ('La date 2 est plus récente.')
+			sinon
+				Ecrire ('Les dates sont égales')
+Fin
+
+------------------------------------------------------------------------------
+				FIN
+			--------------------

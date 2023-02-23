@@ -1,0 +1,224 @@
+               Partie 1 : Généralités
+-----------------------------------------------
+
+EXO1:
+Algorithm Calcul;
+a:entier
+b:entier
+Debut
+	Ecrire ('Donner deux entiers:')
+	lire a
+	lire b
+	si b =! 0 alors
+		Ecrire ('le quotient entier est:',a/b)
+		Ecrire ('le reste de la division est:',a div b)
+		Ecrire ('le modulo de la division est:',a mod b)
+	sinon
+		Ecrire ('On ne peut effectuer les calculs')
+Fin
+
+------------------------------------------------------------------
+
+EXO2:
+Algorithm Mesure;
+a:reel
+Debut
+	Ecrire ('Donner une mesure en dm')
+	lire a
+	Ecrire ('La mesure est:',a,'dm')
+	Ecrire ('La mesure en m est:',a/10)
+	Ecrire ('La mesure en mm est:',a*100)
+	Ecrire ('La mesure en cm est:',a*10)
+	Ecrire ('La mesure en hm est:',a/1000)
+Fin
+
+---------------------------------------------------------------
+
+EXO3:
+Algorithm temperature;
+Tc:reel
+Debut
+	Ecrire ('Donner une temperature en celsius:')
+	lire Tc
+	Ecrire ('La temperature en Celsius est:',Tc)
+	Ecrire ('La temperature en Fahrenheit est: ',(Tc*1.8)+32)
+Fin
+
+----------------------------------------------------------------------------
+
+EXO4:
+Algorithm Cercle;
+r=reel
+Pi=3.14  
+Debut
+	Ecrire ('Donner le rayon d_un cercle')
+	lire r
+	Ecrire ('Le rayon du cercle est:',r)
+	s=r*r;
+	Ecrire ('Sa surface est:',s)
+	p=2*r*Pi;
+	Ecrire('Son perimetre est:',p)
+Fin
+
+-------------------------------------------------------------------------
+
+EXO5:
+Algorithm monnaie;
+m=entier
+Debut
+	Ecrire ('Donner la valeur d_une monnaie en CFA.')
+	lire m
+	Ecrire (m,'CFA')
+	d=m*0.0017;
+	Ecrire (m,'CFA= ',d,'DOLLAR $')
+	ls=m*0.0013;
+	Ecrire (m,'CFA= ',ls,'LIVRE STERLING £')
+Fin
+
+-----------------------------------------------------------
+
+EXO6:
+Algorithm rectangle;
+L=reel
+l=reel
+Debut
+	Ecrire ('Donner la longueur et la largeur.')
+	lire L,l
+	Ecrire ('On a un rectangle de longueur',L,' et de largeur ',l)
+	p=(L+l)*2;
+	Ecrire ('Son perimtre est: ',p)
+	s=L*l;
+	Ecrire ('Sa surface est: ',s)
+	d=racine(l^2+L^2);
+	Ecrire ('La longueur de la diagonale est: ',d)
+Fin
+
+------------------------------------------------------------------------
+
+EXO7:
+Algorithm resistance;
+R1:reel
+R2:reel
+R3:reel
+Debut
+	Ecrire ('Donner 3 resistances:')
+	lire R1, R2, R3
+	Rs=R1+R2+R3;
+	Ecrire ('La resistance en serie est: ',Rs)
+	Rp=(R1*R2*R3)/((R1*R2)+(R2*R3)+(R1*R3));
+	Ecrire ('La resistance en parallele est: ',Rp)
+Fin
+
+------------------------------------------
+
+EXO8:
+Algorithm coordonnee;
+x1:reel
+x2:reel
+y1:reel
+y2:reel
+Debut
+	Ecrire ('Donner les coordonnees de 2 points A(x1,y1) etB(x2,y2):')
+	lire x1, x2, y1, y2
+	Ecrire ('A(',x1,',',y1,')',' et B(',x2,',',y2,')')
+	distance=racine((x1-x2)^2+(y1-y2)^2)
+	Ecrire ('La distance entre les deux points est : ',distance)
+Fin
+
+-------------------------------------------------------------
+
+EXO9:
+Algorithm duree_de_vol;
+h:reel
+min:reel
+Debut
+	Ecrire ('Donner l_heure de depart sous la forme h/min')
+	lire h,min
+	Ecrire ('Donner l_heure de d_arrivee sous la forme h1/min1')
+	lire h1,min1
+  # a. On considère que le départ et l'arrivé ont lieu le même jour
+	hd=(h*60)+min;
+	Ecrire ('Heure de depart en min: ',hd)
+	ha=(h1*60)+min1;
+	Ecrire ('Heure d_arrivee en min: ',ha)
+	dv=ha-hd;
+	Ecrire ('La duree de vol en min est: ',dv)
+	dv_entière =dv div 60;
+	dv_reste=dv mod 60;
+	Ecrire ('La duree de vol en heure minute est: ',dv_entière,'h',dv_reste,'min.')
+  # b. On suppose que la durée de vol est inférieure à 24 heures mais peut avoir lieu le lendemain 
+	reste_jour_dep=(24-h1)*60+min1;
+	dv2=reste_jour_dep+ha;
+	Ecrire ('La duree de vol si c'est au lendemain est: ',dv2 div 60,'h ',dv2 mod 60,'min')
+Fin
+
+------------------------------------------------------------------------------------------------
+
+EXO10:
+Algorithm conversion;
+nbr_sd:entier
+Debut
+	Ecrire ('Donner le nombre de seconde:')
+	lire nbr_sd
+	h=nbr_sd div 3600;
+	min=(nbr_sd mod 3600) div 60;
+	sd=(nbr_sd mod 3600) mod 60;
+	Ecrire ('Le nombre de seconde en heure, minutes et secondes est: ',h,'h',min,'min',sd,'sd.')
+Fin
+
+-------------------------------------------------------------------------------------------------
+
+EXO11:
+Algorithm donnee_produit;
+Type Structure produit
+	libelle:chaine
+	stock:reel
+	prix_unitaire:reel
+	TVA=0.18
+Debut
+	Ecrire ('Donner les caractéristique du produit
+par son libelle(chaine), sa quantité en stock(réel), le prix unitaire (réel).')
+	lire (produit.libelle, produit.stock, produit.prix_unitaire)
+	MStock=prix_unitaire*stock
+	Ecrire ('le montant en stock de chaque produit est: ',MStock)
+	MTTC=MStock+(MStock*TVA)
+	Ecrire ('Le montant TTC:',MTTC)
+FIN
+
+------------------------------------------------------------------------------------------------
+
+EXO12:
+Algorithm donnee_etudiant;
+Structure age
+	jour:entier
+	mois:entier
+	annee:entier
+Structure etudiant
+	nom:chaine
+	prenom:reel
+	date:age
+annee=2023
+de:etudiant
+Debut
+	Ecrire ('Le prenom et nom de l_etudiant est: ')
+	lire (de.prenom,de.nom)
+	Ecrire ('La date de naissance est:')
+	lire (de.age.jour,de.age.mois,de.age.annee)
+	Ecrire ('Son age est:',annee-de.age.annee)
+Fin
+
+----------------------------------------------------------------------------
+
+EXO13:
+Algorithm CAPACITE;
+b:reel
+Debut
+	Ecrire ('Donner un nombre en bit: ')
+	lire b
+	Ecrire ('La capacité en octets: ',b/8)
+	Ecrire ('La capacité en kilo octets: ',b/8000)
+	Ecrire ('La capacité en Mega octets: ',b/8000000)
+	Ecrire ('La capacité en Giga octets: ',b/8000000000)
+Fin
+	
+	

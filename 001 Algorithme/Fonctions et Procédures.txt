@@ -1,0 +1,18 @@
+                                Fonctions et Procédures
+                             -----------------------------
+EXO1:
+-----
+Algorithme annee_bissextile;
+fonctioc annee_bissextile (annee:entier): booléen 
+
+Debut
+	
+	si ((annee mod 4)=0 et (annee mod 100)=!0) ou (annee mod 400)=0 alors
+		annee_bissextile=vraie
+	sinon
+		annee_bissextile=faux
+	fin si
+	retourne annee_bissextile
+Fin
+si annee<1
+	Ecrire ('L_annee est invalide.')

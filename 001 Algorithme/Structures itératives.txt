@@ -1,0 +1,333 @@
+				Partie 3 : Structures itératives
+			------------------------------------------------
+EXO1:
+-----
+Algorithme nombre_parfait;
+n:entier
+s=0
+Debut
+	Ecrire ('Donner un nombre entier: ')
+	lire n
+	tant que i<n faire 
+		si (n mod i=0) alors
+		s=s+i;
+		fin si
+		i=i+1;
+	si n=s alors
+		Ecrire ('Le nombre ',n,' est parfait.')
+	sinon
+		Ecrire ('Le nombre ',n,' est parfait.')
+Fin
+
+--------------------------------------------------------------------------------------------
+EXO2:
+-----
+Algorithme somme_nombre;
+n:entier
+s=0;
+Debut
+	Ecrire ('Donner un nombre entier: ')
+	lire n		
+	tant que i<=n faire
+		s=s+i;
+		i=i+1;
+		Ecrire ('La somme des entiers jusqu_a ',n,' est:',s)		
+Fin
+		-----------------------------------
+Algorithme moyenne;
+n:entier
+s=0;
+m:entier
+Debut
+	Ecrire ('Donner un nombre entier: ')
+	lire n		
+	tant que i<=n faire
+		s=s+i;
+		i=i+1;
+		m=s/n;
+		Ecrire ('La moyenne de la somme des entiers est: ',m)
+Fin
+		
+---------------------------------------------------------------------------------------------
+
+EXO3:
+-----
+Algorithme division_soustraction;
+a:entier
+b:entier
+i=0
+Debut
+	tant que a-b>b faire
+		a=a-b;
+		i=i+1;
+		Ecrire ('La division de a/b est : ',i)
+Fin
+
+---------------------------------------------------------------------------------------------------
+EXO4:
+-----
+Algorithme PGCD;
+a:entier
+b:entier
+r:entier
+Debut
+	Ecrire ('Donner deux valeur a et b: ')
+	lire a,b
+	r=a mod b;
+	si a>b alors 
+		r=a-b;
+		tant que r>=b faire
+			r=r-b;
+		si r=o alor
+			Ecrire ('Le PGCD est: 'b)
+		sinon
+			Ecrire ('On a pas de PGCD.')
+	sinon
+		r=b-a;
+		tant que r>=a faire
+			r=r-a;
+		si r=o alor
+			Ecrire ('Le PGCD est: 'a)
+		sinon
+			Ecrire ('On a pas de PGCD.')
+Fin
+
+---------------------------------------------------------------------------------------------
+EXO5:
+-----
+Algorithme PPMC;
+Algorithme PPCM ;
+a , b ,c ,d : entier ;
+Debut
+	Ecrire ('Entrez vos deux nombres ');
+	lire ( a,b ) ;
+	c=a;
+	d=b;
+	tant que a!=b faire
+		si a > b alors
+			b=b+d
+		sinon
+			a=a+c  ;
+
+     		fin si
+	fin tant que
+	Ecrire ('Le PPCM est de ' , c , ' et ' , d , 'est : ' , a ) ;
+
+Fin.
+
+-------------------------------------------------------------------------------------------
+EXO6:
+-----
+Algorithme somme_prix;
+prix:entier
+Debut
+	Ecrire ('Donner un prix: ')
+	lire prix
+	somme=0;
+	tant que prix!=0 faire
+		somme=somme+prix;
+		Ecrire ('Donner un prix: ')
+		lire prix
+	fin tant que
+	Ecrire ('La somme totale des prix est: ',somme)
+Fin
+
+-----------------------------------------------------------------------------------------
+EXO7:
+-----
+Algorithme maximum;
+nbr=reel;
+max=reel;
+Debut
+	pour i allant de 1 à 10 faire
+		Ecrire ('Donner un nombre: ')
+		lire nbr
+		nbr=max;
+	si nbr<max alors
+ 		Ecrire ('Le plus grand nombre est: ',max)
+	sinon
+		Ecrire ('Le plus grand nombre est: ',nbr)
+Fin
+
+--------------------------------------------------------------------------------------------
+EXO8:
+-----
+Algorithme jeu_devinette;
+nbr_a_deviner:entier
+nbr:entier
+Debut
+	Ecrire('Donner le nombre à deviner:')
+	lire nbr_a_deviner
+	Ecrire ('Vous avez deviner quoi: ')
+	lire nbr
+	tant que nbr!=nbr_a_deviner faire
+		i=i+1;
+		si nbr>nbr_a_deviner alors
+			Ecrire ('la proposition est plus grand que le nombre à deviner.')
+		sinon
+			Ecrire ('La proposition est plus petite que le nombre à deviner.')
+		Ecrire ('Donner un autre proposition: ')
+		lire nbr
+	Ecrire ('Vous avez trouvé le nombre à deviner au ',i,'eme tentative.')
+Fin
+
+--------------------------------------------------------------------------------------------
+EXO9:
+-----
+Algorithme sequence_croissante;
+n:entier
+Debut
+	tant que n<10 ou n>50
+		Ecrire ('Donner un nombre entre compirs entre 10 et 50:')
+
+---------------------------------------------------------------------------------------
+EXO10:
+------
+Algorithme nombres_amis;
+a:entier
+b:entier
+Debut
+	Ecrire ('Donner deux entiers a et b: ')
+	lire a,b
+	pour i allant de 1 à a-1 faire
+		si a mod i=0 alors
+			s_diva=s_diva+i;
+	pour i allant de 1 à b-1 faire
+		si b mod i=0 alors
+			s_divb=s_divb+i;
+	si s_diva=b et s_divb=a alors
+		Ecrire (a,' et ',b,' sont amis.')
+	sinon
+		Ecrire (a,' et ',b,' ne sont pas amis')
+Fin
+
+----------------------------------------------------------------------------------------------
+EXO11:
+------
+Algorithme nombre_premier;
+nbr:entier
+a=0
+Debut
+	Ecrire ('Donner un nombre entier: ')
+	lire nbr
+	pour i=2 jusqu'à i=n-1 faire
+		si nbr mod i=0 
+			a=a+1;
+		fin si
+	Fin pour
+		Ecrire '(le nombre n_est pas premier.')
+	si a=0 alors
+		Ecrire ('Le nombre est premier.')
+	sinon
+		Ecrire ('Le nombre n_est pas premier.')
+Fin
+
+----------------------------------------------------------------------------------------------
+EXO12:
+------
+Algorithme nombre_parfait;
+n:entier
+Debut
+	Ecrire ('Donner un nombre entier positif:')
+	lire n
+	n_div=0;
+	pour i allant de 1 à n faire
+		si n mod i=0 alors
+			i=i+1;
+			n_div=n_div+i;
+	si n_div=n alors
+		Ecrire ('Le nombre est parfait.')
+	sinon
+		Ecrire ('Le nombre n_est pas parfait.')
+Fin
+
+-----------------------------------------------------------------------------------------
+EXO13:
+------
+Algorithme suite_nbr_premier;
+n:entier
+comp_premier:entier
+var:chaine
+Debut
+	a=0
+	i=0
+	var=
+	repeter 
+		Ecrire ('Donner un entier:')
+		lire n
+		pour i=2 jusqu'à i=n-1 faire
+		si nbr mod i=0 
+			a=a+1;
+			Ecrire '(le nombre n_est pas premier.')
+		fin si
+		
+		si a=0 alors
+			var=var+' '+n;
+	jusqu'à n=0
+
+	Ecrire ('le nombre de nombre premier est pas: ',var,'.')
+		
+Fin
+
+-----------------------------------------------------------------------------------------
+EXO14:
+------
+Algorithme nbr_premier_entre_1_N;
+n:entier
+Debut
+	Ecrire ('Donner un entier n: ')
+	lire n
+	pour i=1 jusqu'à n faire
+		pour a=2 jusqu'à a=i-1 faire
+			si i mod a=0 
+				compteur=compteur+1;
+			fin si
+		si compteur=0 alors
+			Ecrire (i,' est un nombre premier.')
+	fin pour
+Fin
+
+-----------------------------------------------------------------------------------------------------
+EXO15:
+------
+Algorithme nbr_premier_entre_1_N;
+n:entier
+compteur=0
+c=0
+Debut
+	Ecrire ('Donner un entier n: ')
+	lire n
+	i=2
+	repeter
+		pour a=2 jusqu'à a=i-1 faire
+			si i mod a=0 
+				c=c+1;
+			fin si
+			si c=0 alors
+				Ecrire (i,' est un nombre premier.')
+				compteur=compteur+1;
+		fin pour
+		i=i+1;
+	jusqu'à compteur=n		
+Fin
+
+------------------------------------------------------------------------------------------
+EXO16:
+------
+Algorithme sapin;
+s:caractèreh_feuilles:entier
+h_tronc:entier
+l_racine:entier
+Debut
+	Ecrire ('Donner la hauteur des feuilles, la hauteur du tronc et la largeur des racines: ')
+	lire h_feuilles,h_tronc,l_racine
+	si s!=$ ou s!=* ou s!=+ ou s!=0 alors
+		Ecrire ('le symbole à utiliser pour dessiner le sapin : $,*,+ ou 0')
+	sinon
+		Ecrire ('le symbole à utiliser pour dessiner le sapin est ',s,' .')
+	for i=0 jusqu'à i=h_feuilles-1
+		for j=(h_feuilles-i)-1 jusqu'à j=0
+			Ecrire (' ')
+		for k=(2*i)+1
+	
+

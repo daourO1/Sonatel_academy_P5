@@ -1,0 +1,83 @@
+                                     Tableaux:
+                                 --------------------
+EXO1:
+-----
+Algorithme tableau_consecutif;
+tab:tableau[1,n]entier
+n,i:entier
+Debut
+	Ecrire ('Donner la taille du tableau: ')
+	lire n
+	pour i=1 jusqu'à n faire
+		Ecrire ('valeur',i)
+		lire (tab[i])
+	fin pour
+	pour i=1 jusqu'à n faire
+		si tab[i+1]=tab[i]+1 alors
+			Ecrire ('Les éléments du tableau sont consécutifs')
+		sinon
+			Ecrire ('Les éléments du tableau ne sont pas consécutifs')
+Fin
+------------------------------
+Algorithme fonction_tableau_consecutif;
+fonction tab_consecutif:(tab:tableau[1,n]entier):booléen 
+i=0
+Debut
+	pour i=1 jusqu'à n faire
+		Ecrire ('valeur',i)
+		lire (tab[i])
+	fin pour
+	pour i=1 jusqu'à n faire
+		si tab[i+1]=tab[i]+1 alors
+			retourne vraie
+		sinon
+			retourne faux
+Fin fonction
+Fin
+
+-----------------------------------------------------------------------------------------
+EXO2:
+-----
+Algorithme fusion_tableau;
+tab1:tableau[1,n]entier
+tab2:tableau[1,m]entier
+tab:tableau[1,n+m]entier
+i=0;
+j=0;
+e=0;
+Debut
+	pour i=1 jusqu'à n faire
+		Ecrire ('valeur',i)
+		lire (tab1[i])
+		pour e=1 jusqu'à n faire
+			tab[e]=tab1[i]
+	pour j=1 jusqu'à m faire
+		Ecrire ('valeur',j)
+		lire (tab2[j])
+		pour e=n+1 jusqu'à e=n+m faire
+			tab[e]=tab2[j]
+	fin pour
+	Ecrire (tab)
+Fin 
+
+-----------------------------------------------------------------------------------------
+EXO3:
+-----
+tab1:tableau[1,n]entier
+tab2:tableau[1,n]entier
+i=0;
+Debut
+	pour i=1 jusqu'à n faire
+		Ecrire ('valeur',i)
+		lire (tab1[i])
+		pour j=1 jusqu'à n faire
+			tab2[j]=tab1[n-1]
+	fin pour
+	Ecrire (tab2)
+Fin
+
+------------------------------------------------------------------------------------------
+EXO4:
+-----
+
+			
