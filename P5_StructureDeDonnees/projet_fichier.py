@@ -157,8 +157,35 @@ while booleen:
                     # écrire les données XML dans un fichier
                 xml_file.write(donnee)
                 xml_file.write("<\n</Etudiants>")
-                print(donnee)
+                #print(donnee)
 
+            # ouvrir le fichier XML en mode lecture
+            with open(chemin_fich_xml, 'r') as xml_file:
+                # créer un arbre XML
+                tree = ET.parse(xml_file)
+                # obtenir la racine de l'arbre
+                root = tree.getroot()
+            
+                # initialiser une liste pour stocker les données
+                donnees = []
+            
+                # parcourir les éléments enfants de la racine
+                for element in root:
+                    # initialiser un dictionnaire pour stocker les données de l'élément
+                    dict = {}
+                    # parcourir les attributs de l'élément
+                    for attribut in element.attrib:
+                        # ajouter l'attribut au dictionnaire
+                        dict[attribut] = element.attrib[attribut]
+                    # parcourir les éléments enfants de l'élément
+                    for sous_element in element:
+                        # ajouter le sous-élément au dictionnaire
+                        dict[sous_element.tag] = sous_element.text
+                    # ajouter le dictionnaire à la liste des données
+                    donnees.append(dict)
+            
+            # afficher les données sous forme de liste de dictionnaires
+            print(donnees)
 
 
 
