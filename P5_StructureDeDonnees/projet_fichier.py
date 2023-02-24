@@ -89,7 +89,7 @@ while booleen:
         # print("Les donnees invalide sont: \n",donnees_invalidesJ)
         # print(len(donnees_invalides))
         # print()
-        print("Les donnees valide sont: \n",donnees_validesJ)
+        # print("Les donnees valide sont: \n",donnees_validesJ)
         # print(len(donnees_valides))
         ## Filtrer les données 
         choice=True
@@ -106,6 +106,7 @@ while booleen:
             choix=input("Données votre choix: ")
             if choix=='1':
                 print("Afficher les informations Valide de JSON en XML")
+                print()
                 chemin_fich_xml = "Donnees_validesJ_Python_DataC5.xml"
                 veri=liste_xml(donnees_validesJ,chemin_fich_xml)
                 print(veri)
@@ -169,7 +170,7 @@ while booleen:
                     # écrire les données XML dans un fichier
                 xml_file.write(donneeX)
                 xml_file.write("\n</Etudiants>")
-                print("Les données XML: \n",donneeX)
+                #print("Les données XML: \n",donneeX)
 
             # ouvrir le fichier XML en mode lecture
             with open(chemin_fich_xml, 'r') as xml_file:
@@ -274,12 +275,12 @@ while booleen:
                 elif choix=='3':
                     print("Afficher les informations Invalide XML en JSON")
                     chemin_fich_json = "Donnees_invalidesX_Python_DataC5.xml"
-                    liste_json(donnees_valides,chemin_fich_json)
+                    liste_json(donnees_validesX,chemin_fich_json)
                     print()
                 elif choix=='4':
                     print("Afficher les informations Invalide XML en CSV")
                     chemin_fich_csv = "Donnees_invalidesX_Python_DataC5.csv"
-                    liste_csv(donnees_invalides, chemin_fich_csv)
+                    liste_csv(donnees_invalidesX, chemin_fich_csv)
                     
                 
                 

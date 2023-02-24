@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>)
+<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>
 <Etudiants>
             <etudiant>
                     <CODE> AAD003 </CODE>
@@ -1070,5 +1070,5 @@
                     <Date_de_naissance> 12/03/92 </Date_de_naissance>
                     <Classe> 5 eme B </Classe>
                     <Note> SVT[12|20:19] #PC[13|14:10] #Francais[14|18:19] #SVT[16|19:14] #Anglais[14|15:18] #HG[10|07:20] #Math[19|17:18] </Note> 
-            </etudiant><
+            </etudiant>
 </Etudiants>

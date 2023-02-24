@@ -350,25 +350,7 @@ def liste_xml(donnees_valides,chemin_fich_xml):
         xml_file.write("\n</Etudiants>")
     return donnee
         
-        #print(donnee)
-
-    # # ajouter les éléments enfants avec les valeurs
-    # for row in donnees_valides:
-    #     row_elem = ET.SubElement(root, "row")
-    #     for i, value in enumerate(row):
-    #         col_elem = ET.SubElement(row_elem, "col" + str(i))
-    #         col_elem.text = str(value)
-
-    # # écrire le fichier XML
-    # tree = ET.ElementTree(root)
-    # tree.write(chemin_fich_xml)
-
-    # # lire le contenu du fichier et l'afficher
-    # with open(chemin_fich_xml, 'r') as xml_file:
-    #     content = xml_file.read()
-    #     print(content)
-
-
+   
 
 ## Fonction transformation liste en JSON
 def liste_json(donnees_valides,chemin_fich_json):
@@ -394,13 +376,18 @@ def liste_json(donnees_valides,chemin_fich_json):
 
 ## Fonction transformation liste en CSV
 def liste_csv(donnees_valides, chemin_fich_csv):
+    en_tete=['CODE','Numero','Nom','Prénom','Date de naissance','Classe','Note']
     # écrire le fichier CSV
-    with open(chemin_fich_csv, 'w', newline='') as csv_file:
-        writer = csv.writer(csv_file)
+    with open(chemin_fich_csv, 'w') as csv_file:
+        #writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer = csv.DictWriter(csv_file,en_tete)
+        writer.writeheader()
         for etudiant in donnees_valides:
-            writer.writerow(etudiant)
-
-    # lire le contenu du fichier et l'afficher
-    with open(chemin_fich_csv, 'r') as csv_file:
-        fichier = csv_file.read()
-        print(fichier)
+            writer.writerow({en_tete[0]:etudiant['CODE'],en_tete[1]:etudiant['Numero'],en_tete[2]:etudiant['Nom'],en_tete[3]:etudiant['Prénom'],en_tete[4]:etudiant['Date de naissance'],en_tete[5]:etudiant['Classe'],en_tete[6]:etudiant['Note']})
+    csv_file.close()
+    #     writer.writerow(donnees_valides)
+    # # lire le contenu du fichier et l'afficher
+    # with open(chemin_fich_csv, 'r') as csv_file:
+    #     fichier = csv_file.read()
+    #     print(fichier)
+    # return fichier
