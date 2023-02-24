@@ -329,7 +329,7 @@ def trie_etudiant(donnees_valides):
 ## Fonction transformation liste en XML
 def liste_xml(donnees_valides,chemin_fich_xml):
     with open(chemin_fich_xml, 'w') as xml_file:
-        xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>)\n<Etudiants>")
+        xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>\n<Etudiants>")
         donnee=""
         for etudiant in donnees_valides:
             
@@ -347,7 +347,7 @@ def liste_xml(donnees_valides,chemin_fich_xml):
             
             # écrire les données XML dans un fichier
         xml_file.write(donnee)
-        xml_file.write("<\n</Etudiants>")
+        xml_file.write("\n</Etudiants>")
     return donnee
         
         #print(donnee)

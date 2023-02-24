@@ -4,8 +4,10 @@ import json
 import xml.etree.ElementTree as ET
 import csv
 import json
-donnees_valides=[]
-donnees_invalides=[]
+donnees_validesJ=[]
+donnees_invalidesJ=[]
+donnees_validesX=[]
+donnees_invalidesX=[]
 booleen=True
 #fichier=input("Vous voulez transformer votre fichier CSV en fichier XML ou en fichier JSON: ")
 while booleen:
@@ -27,16 +29,17 @@ while booleen:
             for row in csv_reader:
                 # ajouter la ligne à la liste des données
                 donneesJ.append(row)
-            #print(o"Les données CSV:\n",donnees)
+
         
         # ouvrir le fichier JSON en mode écriture
         with open(chemin_fich_json, 'w') as json_file:
             # écrire les données au format JSON dans le fichier
-            dataJ=json.dumps(donnees)
+            dataJ=json.dumps(donneesJ)
             json_file.write(dataJ)
-            data=json.loads(dataJ)
+            dataJ=json.loads(dataJ)
             #print()
-            print("Les données JSON:\n",data)
+            #print("Les données JSON:\n",data)
+            #print(len(donneesJ))
             # for i in data:
             #     print(i)
         for etudiant in dataJ:
@@ -83,10 +86,10 @@ while booleen:
                 donnees_validesJ.append(etudiant)
             else:
                 donnees_invalidesJ.append(etudiant)
-        # print("Les donnees invalide sont: \n",donnees_invalides)
+        # print("Les donnees invalide sont: \n",donnees_invalidesJ)
         # print(len(donnees_invalides))
         # print()
-        # print("Les donnees valide sont: \n",donnees_valides)
+        print("Les donnees valide sont: \n",donnees_validesJ)
         # print(len(donnees_valides))
         ## Filtrer les données 
         choice=True
@@ -104,22 +107,26 @@ while booleen:
             if choix=='1':
                 print("Afficher les informations Valide de JSON en XML")
                 chemin_fich_xml = "Donnees_validesJ_Python_DataC5.xml"
-                liste_xml(donnees_validesJ,chemin_fich_xml)
+                veri=liste_xml(donnees_validesJ,chemin_fich_xml)
+                print(veri)
                 print()
             elif choix=='2':
                 print("Afficher les informations Valide JSON en CSV")
                 chemin_fich_csv = "Donnees_validesJ_Python_DataC5.csv"
-                liste_csv(donnees_validesJ, chemin_fich_csv)
+                veri=liste_csv(donnees_validesJ, chemin_fich_csv)
+                print(veri)
                 print()
             elif choix=='3':
                 print("Afficher les informations Invalide JSON en XML")
                 chemin_fich_xml = "Donnees_invalidesJ_Python_DataC5.xml"
-                liste_xml(donnees_invalidesJ,chemin_fich_xml)
+                veri=liste_xml(donnees_invalidesJ,chemin_fich_xml)
+                print(veri)
                 print()
             elif choix=='4':
                 print("Afficher les informations Invalide de JSON en CSV")
                 chemin_fich_csv = "Donnees_invalidesJ_Python_DataC5.csv"
-                liste_csv(donnees_invalidesJ, chemin_fich_csv)
+                veri=liste_csv(donnees_invalidesJ, chemin_fich_csv)
+                print(veri)
             exit
                 
     if fichier=='XML':
@@ -142,7 +149,7 @@ while booleen:
                 # nom du fichier XML à écrire
             chemin_fich_xml = "Donnees_Projet_Python_DataC5.xml"
             with open(chemin_fich_xml, 'w') as xml_file:
-                xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>)\n<Etudiants>")
+                xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>\n<Etudiants>")
                 
                 donneeX=""
                 for etudiant in donnees:
@@ -161,7 +168,7 @@ while booleen:
                     
                     # écrire les données XML dans un fichier
                 xml_file.write(donneeX)
-                xml_file.write("<\n</Etudiants>")
+                xml_file.write("\n</Etudiants>")
                 print("Les données XML: \n",donneeX)
 
             # ouvrir le fichier XML en mode lecture
@@ -176,6 +183,7 @@ while booleen:
             
                 # parcourir les éléments de la racine
                 for element in root:
+                    print(element)
                     # initialiser un dictionnaire pour stocker les données de l'élément
                     dict = {}
                     # parcourir les attributs de l'élément
@@ -208,13 +216,13 @@ while booleen:
                     etudiant["Motif"]="Nom invalide"
                     #donnees_invalides.append(etudiant)
                     # Vérification de la validité de prénom etudiant
-                if prenom_etudiant(etudiant["Prénom"])==True:
+                if prenom_etudiant(etudiant["Prenom"])==True:
                     cpt+=1
                 else:
                     etudiant["Motif"]="Prénom invalide"
                     #donnees_invalides.append(etudiant)
                     # Vérification de la validité de la date de naissance de etudiant
-                if date_naissance_etudiant(etudiant["Date de naissance"])==True:
+                if date_naissance_etudiant(etudiant["Date_de_naissance"])==True:
                     cpt+=1
                 else: 
                     etudiant["Motif"]="Date de naissance invalide"
