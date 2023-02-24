@@ -22,24 +22,24 @@ while booleen:
             # créer un lecteur CSV
             csv_reader = csv.DictReader(csv_file)
             # initialiser une liste pour stocker les données
-            donnees = []
+            donneesJ = []
             # parcourir les lignes du fichier CSV
             for row in csv_reader:
                 # ajouter la ligne à la liste des données
-                donnees.append(row)
+                donneesJ.append(row)
             #print(o"Les données CSV:\n",donnees)
         
         # ouvrir le fichier JSON en mode écriture
         with open(chemin_fich_json, 'w') as json_file:
             # écrire les données au format JSON dans le fichier
-            data=json.dumps(donnees)
-            json_file.write(data)
-            data=json.loads(data)
+            dataJ=json.dumps(donnees)
+            json_file.write(dataJ)
+            data=json.loads(dataJ)
             #print()
             print("Les données JSON:\n",data)
             # for i in data:
             #     print(i)
-        for etudiant in data:
+        for etudiant in dataJ:
             #etudiant=[code,numero,nom,prenom,date_naissance,classe,note]
             cpt=0
             # Vérification de la validité de numéro etudiant
@@ -80,15 +80,15 @@ while booleen:
                 #donnees_invalides.append(etudiant)
                     # Si toutes les données sont valides, on ajoute les données à la liste des données valides
             if cpt==(len(etudiant)-1):
-                donnees_valides.append(etudiant)
+                donnees_validesJ.append(etudiant)
             else:
-                donnees_invalides.append(etudiant)
-        print("Les donnees invalide sont: \n",donnees_invalides)
-        print(len(donnees_invalides))
-        print("Les donnees valide sont: \n",donnees_valides)
-        print(len(donnees_valides))
-    
-        
+                donnees_invalidesJ.append(etudiant)
+        # print("Les donnees invalide sont: \n",donnees_invalides)
+        # print(len(donnees_invalides))
+        # print()
+        # print("Les donnees valide sont: \n",donnees_valides)
+        # print(len(donnees_valides))
+        ## Filtrer les données 
         choice=True
         while choice:
             print()
@@ -100,22 +100,28 @@ while booleen:
             print(100*'-')
             print()
             
-            choix=input("Vous voulez transformer les données valides en XML ou en CSV: ")
-            if choix=='XML':
-                print("Afficher les informations Valide en XML")
+            choix=input("Données votre choix: ")
+            if choix=='1':
+                print("Afficher les informations Valide de JSON en XML")
                 chemin_fich_xml = "Donnees_validesJ_Python_DataC5.xml"
-                liste_xml(donnees_valides,chemin_fich_xml)
+                liste_xml(donnees_validesJ,chemin_fich_xml)
                 print()
-                print("Afficher les informations Invalide en CSV")
+            elif choix=='2':
+                print("Afficher les informations Valide JSON en CSV")
+                chemin_fich_csv = "Donnees_validesJ_Python_DataC5.csv"
+                liste_csv(donnees_validesJ, chemin_fich_csv)
+                print()
+            elif choix=='3':
+                print("Afficher les informations Invalide JSON en XML")
+                chemin_fich_xml = "Donnees_invalidesJ_Python_DataC5.xml"
+                liste_xml(donnees_invalidesJ,chemin_fich_xml)
+                print()
+            elif choix=='4':
+                print("Afficher les informations Invalide de JSON en CSV")
                 chemin_fich_csv = "Donnees_invalidesJ_Python_DataC5.csv"
-                liste_csv(donnees_invalides, chemin_fich_csv)
-    #         elif choix=='CSV':
-    #             print("Afficher les informations Valide en CSV")
-    #             chemin_fich_csv = "Donnees_valides_Python_DataC5.csv"
-    #             liste_csv(donnees_valides, chemin_fich_csv)
-    #             print("Afficher les informations Invalide en XML")
-    #             chemin_fich_xml = "Donnees_invalides_Python_DataC5.xml"
-    #             liste_xml(donnees_invalides,chemin_fich_xml)
+                liste_csv(donnees_invalidesJ, chemin_fich_csv)
+            exit
+                
     if fichier=='XML':
         # nom du fichier CSV à lire
         chemin_fich_csv = "Donnees_Projet_Python_DataC5.csv"
@@ -131,18 +137,17 @@ while booleen:
             for row in csv_reader:
                 # ajouter la ligne à la liste des données
                 donnees.append(row)
-            print(donnees)
-            #print("Les données CSV:\n",donnees)
+            #print("Les données CSV:\n",donneesX)
             
                 # nom du fichier XML à écrire
             chemin_fich_xml = "Donnees_Projet_Python_DataC5.xml"
             with open(chemin_fich_xml, 'w') as xml_file:
                 xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>)\n<Etudiants>")
                 
-                donnee=""
+                donneeX=""
                 for etudiant in donnees:
                     
-                    data='''
+                    dataX='''
                     <etudiant>
                             <CODE> %s </CODE>
                             <Numero> %s </Numero>
@@ -152,12 +157,12 @@ while booleen:
                             <Classe> %s </Classe>
                             <Note> %s </Note> 
                     </etudiant>''' %(etudiant["CODE"],etudiant["Numero"],etudiant["Nom"],etudiant["Prénom"],etudiant["Date de naissance"],etudiant["Classe"],etudiant["Note"])
-                    donnee+=data
+                    donneeX+=dataX
                     
                     # écrire les données XML dans un fichier
-                xml_file.write(donnee)
+                xml_file.write(donneeX)
                 xml_file.write("<\n</Etudiants>")
-                #print(donnee)
+                print("Les données XML: \n",donneeX)
 
             # ouvrir le fichier XML en mode lecture
             with open(chemin_fich_xml, 'r') as xml_file:
@@ -167,9 +172,9 @@ while booleen:
                 root = tree.getroot()
             
                 # initialiser une liste pour stocker les données
-                donnees = []
+                donneesX = []
             
-                # parcourir les éléments enfants de la racine
+                # parcourir les éléments de la racine
                 for element in root:
                     # initialiser un dictionnaire pour stocker les données de l'élément
                     dict = {}
@@ -182,12 +187,12 @@ while booleen:
                         # ajouter le sous-élément au dictionnaire
                         dict[sous_element.tag] = sous_element.text
                     # ajouter le dictionnaire à la liste des données
-                    donnees.append(dict)
+                    donneesX.append(dict)
             
             # afficher les données sous forme de liste de dictionnaires
-            #print(donnees)
+            print("Les données XLM en dictionnaire : \n",donneesX)
 
-            for etudiant in donnees:
+            for etudiant in donneesX:
                 #etudiant=[code,numero,nom,prenom,date_naissance,classe,note]
                 cpt=0
                 # Vérification de la validité de numéro etudiant
@@ -228,42 +233,48 @@ while booleen:
                     #donnees_invalides.append(etudiant)
                         # Si toutes les données sont valides, on ajoute les données à la liste des données valides
                 if cpt==(len(etudiant)-1):
-                    donnees_valides.append(etudiant)
+                    donnees_validesX.append(etudiant)
                 else:
-                    donnees_invalides.append(etudiant)
-            print("Les donnees invalide sont: \n",donnees_invalides)
-            print(len(donnees_invalides))
-            print("Les donnees valide sont: \n",donnees_valides)
-            print(len(donnees_valides))
-        
-            
+                    donnees_invalidesX.append(etudiant)
+            # print("Les donnees invalide sont: \n",donnees_invalides)
+            # print(len(donnees_invalides))
+            # print("Les donnees valide sont: \n",donnees_valides)
+            # print(len(donnees_valides))
+            ## Filtrer les données
             choice=True
             while choice:
                 print()
                 print(100*'-')
                 print(30*' ',"⏩ ⏩ ⏩ ⏩ ⏩   MENU   ⏪ ⏪ ⏪ ⏪ ⏪ ")
                 print(100*'-')
-                menu=affichage_menu()
-                print(affichage_menu)
+                menu=affichage_menu1()
+                print(affichage_menu1)
                 print(100*'-')
                 print()
                 
-                choix=input("Vous voulez transformer les données valides en XML ou en CSV: ")
-                if choix=='XML':
-                    print("Afficher les informations Valide en XML")
-                    chemin_fich_xml = "Donnees_validesJ_Python_DataC5.xml"
-                    liste_xml(donnees_valides,chemin_fich_xml)
+                choix=input("Doneer votre choix: ")
+                if choix=='1':
+                    print("Afficher les informations Valide XML en JSON")
+                    chemin_fich_json = "Donnees_validesX_Python_DataC5.xml"
+                    liste_json(donnees_validesX,chemin_fich_json)
                     print()
-                    print("Afficher les informations Invalide en CSV")
-                    chemin_fich_csv = "Donnees_invalidesJ_Python_DataC5.csv"
+                elif choix=='2':
+                    print("Afficher les informations Valide XML en CSV")
+                    chemin_fich_csv = "Donnees_validesX_Python_DataC5.csv"
+                    liste_csv(donnees_validesX, chemin_fich_csv)
+                    print()
+                elif choix=='3':
+                    print("Afficher les informations Invalide XML en JSON")
+                    chemin_fich_json = "Donnees_invalidesX_Python_DataC5.xml"
+                    liste_json(donnees_valides,chemin_fich_json)
+                    print()
+                elif choix=='4':
+                    print("Afficher les informations Invalide XML en CSV")
+                    chemin_fich_csv = "Donnees_invalidesX_Python_DataC5.csv"
                     liste_csv(donnees_invalides, chemin_fich_csv)
-        #         elif choix=='CSV':
-        #             print("Afficher les informations Valide en CSV")
-        #             chemin_fich_csv = "Donnees_valides_Python_DataC5.csv"
-        #             liste_csv(donnees_valides, chemin_fich_csv)
-        #             print("Afficher les informations Invalide en XML")
-        #             chemin_fich_xml = "Donnees_invalides_Python_DataC5.xml"
-        #             liste_xml(donnees_invalides,chemin_fich_xml)
+                    
+                
+                
 
 
 

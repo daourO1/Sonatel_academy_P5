@@ -5,13 +5,19 @@ import xml.etree.ElementTree as ET
 import csv
 
 def affichage_menu():
-    print("   1-  D’afficher les informations Valide ")
-    print("   2-  D’afficher les informations invalide ")
-    print("   3-  D’afficher une information (par son numéro)")
-    print("   4-  D’afficher les cinq premierModificatios")
-    print("   5-  D’ajouter une information en vérifiant la validité des informations données.")
-    print("   6-  De modifier une information invalide ensuite le transférer dans la structure où se trouve les informations valides")
-
+    print("   1-  Transformation données valides JSON en XML ")
+    print("   2-  Transformation données valides JSON en CSV ")
+    print("   3-  Transformation données invalides JSON en XML")
+    print("   4-  Transformation données invalides JSON en CSV")
+    
+    
+def affichage_menu1():
+    print("   1-  Transformation données valides XML en JSON ")
+    print("   2-  Transformation données valides XML en CSV ")
+    print("   3-  Transformation données invalides XML en JSON")
+    print("   4-  Transformation données invalides XML en CSV")
+    
+    
 ## Fontion pour les numéros
 #numero='12QSDF3'
 def numero_etudiant(numero):
@@ -322,24 +328,45 @@ def trie_etudiant(donnees_valides):
 
 ## Fonction transformation liste en XML
 def liste_xml(donnees_valides,chemin_fich_xml):
-    # créer l'élément racine
-    root = ET.Element("donnees_valides")
+    with open(chemin_fich_xml, 'w') as xml_file:
+        xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>)\n<Etudiants>")
+        donnee=""
+        for etudiant in donnees_valides:
+            
+            data='''
+            <etudiant>
+                    <CODE> %s </CODE>
+                    <Numero> %s </Numero>
+                    <Nom> %s </Nom>
+                    <Prenom> %s </Prenom>
+                    <Date_de_naissance> %s </Date_de_naissance>
+                    <Classe> %s </Classe>
+                    <Note> %s </Note> 
+            </etudiant>''' %(etudiant["CODE"],etudiant["Numero"],etudiant["Nom"],etudiant["Prénom"],etudiant["Date de naissance"],etudiant["Classe"],etudiant["Note"])
+            donnee+=data
+            
+            # écrire les données XML dans un fichier
+        xml_file.write(donnee)
+        xml_file.write("<\n</Etudiants>")
+    return donnee
+        
+        #print(donnee)
 
-    # ajouter les éléments enfants avec les valeurs
-    for row in donnees_valides:
-        row_elem = ET.SubElement(root, "row")
-        for i, value in enumerate(row):
-            col_elem = ET.SubElement(row_elem, "col" + str(i))
-            col_elem.text = str(value)
+    # # ajouter les éléments enfants avec les valeurs
+    # for row in donnees_valides:
+    #     row_elem = ET.SubElement(root, "row")
+    #     for i, value in enumerate(row):
+    #         col_elem = ET.SubElement(row_elem, "col" + str(i))
+    #         col_elem.text = str(value)
 
-    # écrire le fichier XML
-    tree = ET.ElementTree(root)
-    tree.write(chemin_fich_xml)
+    # # écrire le fichier XML
+    # tree = ET.ElementTree(root)
+    # tree.write(chemin_fich_xml)
 
-    # lire le contenu du fichier et l'afficher
-    with open(chemin_fich_xml, 'r') as xml_file:
-        content = xml_file.read()
-        print(content)
+    # # lire le contenu du fichier et l'afficher
+    # with open(chemin_fich_xml, 'r') as xml_file:
+    #     content = xml_file.read()
+    #     print(content)
 
 
 
@@ -358,8 +385,8 @@ def liste_json(donnees_valides,chemin_fich_json):
     
     # lire le contenu du fichier et l'afficher
     with open(chemin_fich_json, 'r') as json_file:
-       content = json_file.read()
-       print(content)
+       fichier = json_file.read()
+       print(fichier)
 ## affichage 
 # json_file_path = "Donnees_Projet_Python_DataC5.json"
 
@@ -375,5 +402,5 @@ def liste_csv(donnees_valides, chemin_fich_csv):
 
     # lire le contenu du fichier et l'afficher
     with open(chemin_fich_csv, 'r') as csv_file:
-        content = csv_file.read()
-        print(content)
+        fichier = csv_file.read()
+        print(fichier)
