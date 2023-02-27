@@ -81,7 +81,7 @@ def date_naissance_etudiant(date_naissance):
             else:
                 date+=date_naissance[i]
         # print(date)
-        # date=date_naissance
+        date=date_naissance
         # vérifie si le premier caractère n'est pas un chiffre
         if not date[0].isnumeric() and date!="":  
             # supprime le premier caractère de la chaîne
