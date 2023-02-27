@@ -128,7 +128,7 @@ while booleen:
                 chemin_fich_csv = "Donnees_invalidesJ_Python_DataC5.csv"
                 veri=liste_csv(donnees_invalidesJ, chemin_fich_csv)
                 print(veri)
-            exit
+    exit
                 
     if fichier=='XML':
         # nom du fichier CSV à lire
@@ -184,7 +184,7 @@ while booleen:
             
                 # parcourir les éléments de la racine
                 for element in root:
-                    print(element)
+                    # print(element)
                     # initialiser un dictionnaire pour stocker les données de l'élément
                     dict = {}
                     # parcourir les attributs de l'élément
@@ -245,9 +245,9 @@ while booleen:
                     donnees_validesX.append(etudiant)
                 else:
                     donnees_invalidesX.append(etudiant)
-            # print("Les donnees invalide sont: \n",donnees_invalides)
+            print("Les donnees invalide sont: \n",donnees_invalidesX)
             # print(len(donnees_invalides))
-            # print("Les donnees valide sont: \n",donnees_valides)
+            print("Les donnees valide sont: \n",donnees_validesX)
             # print(len(donnees_valides))
             ## Filtrer les données
             choice=True
@@ -264,7 +264,7 @@ while booleen:
                 choix=input("Doneer votre choix: ")
                 if choix=='1':
                     print("Afficher les informations Valide XML en JSON")
-                    chemin_fich_json = "Donnees_validesX_Python_DataC5.xml"
+                    chemin_fich_json = "Donnees_validesX_Python_DataC5.json"
                     liste_json(donnees_validesX,chemin_fich_json)
                     print()
                 elif choix=='2':
@@ -274,7 +274,7 @@ while booleen:
                     print()
                 elif choix=='3':
                     print("Afficher les informations Invalide XML en JSON")
-                    chemin_fich_json = "Donnees_invalidesX_Python_DataC5.xml"
+                    chemin_fich_json = "Donnees_invalidesX_Python_DataC5.json"
                     liste_json(donnees_validesX,chemin_fich_json)
                     print()
                 elif choix=='4':

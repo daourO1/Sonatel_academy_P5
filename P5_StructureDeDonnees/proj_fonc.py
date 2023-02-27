@@ -64,64 +64,67 @@ def nom_etudiant(nom):
 ## Fonction date de naissance
 #date_naissance='16/08/99'
 def date_naissance_etudiant(date_naissance):
-    if not date_naissance:
-        return False
-    c=['/','-','_',',','|',':','.',' ']
-    date=''
-    date1=''
-    date_naissance1=""
-    date_new=""
-    new_date=""
-    naissance=""
-    new_naissance=""
-    # Supprime les espace inutiles
-    for i in range(len(date_naissance)):
-        if date_naissance[i]==' ' and date_naissance[i+1]==' ':
-            continue 
+    if date_naissance!="":
+        # return False
+        c=['/','-','_',',','|',':','.',' ']
+        date=''
+        date1=''
+        date_naissance1=""
+        date_new=""
+        new_date=""
+        naissance=""
+        new_naissance=""
+        # Supprime les espace inutiles
+        for i in range(len(date_naissance)):
+            if date_naissance[i-1]==' ' and date_naissance[i]==' ':
+                continue 
+            else:
+                date+=date_naissance[i]
+        # print(date)
+        # date=date_naissance
+        # vérifie si le premier caractère n'est pas un chiffre
+        if not date[0].isnumeric() and date!="":  
+            # supprime le premier caractère de la chaîne
+            date_new = date[1:]  
         else:
-            date+=date_naissance[i]
-    #print(date)
-    # vérifie si le premier caractère n'est pas un chiffre
-    if not date[0].isdigit():  
-        # supprime le premier caractère de la chaîne
-        date_new = date[1:]  
-    else:
-        date_new=date
-    #print(date_new)
-    # Créer une table de traduction qui remplace tous les caractères de la liste c par /
-    table = str.maketrans(dict.fromkeys(c, '/'))
-    # Appliquer la table de traduction à la chaîne de caractères new_date
-    naissance = date_new.translate(table)
-    #print(naissance)
-    # Supprime les '/' inutiles
-    for i in range(len(naissance)):
-        if naissance[i]=='/' and naissance[i+1]=='/':
-            continue
-        else:
-            new_naissance+=naissance[i]
-    #print(new_naissance)
-    # Verifier si la date respecte le format jour/mois/année
-    format_string = "%d/%m/%y"
-    try:
-        new_naissance=datetime.strptime(new_naissance, format_string)
-        return True
-    except ValueError:
-        return False
+            date_new=date
+        #print(date_new)
+        # Créer une table de traduction qui remplace tous les caractères de la liste c par /
+        table = str.maketrans(dict.fromkeys(c, '/'))
+        # Appliquer la table de traduction à la chaîne de caractères new_date
+        naissance = date_new.translate(table)
+        #print(naissance)
+        # Supprime les '/' inutiles
+        for i in range(len(naissance)):
+            if naissance[i-1]=='/' and naissance[i]=='/':
+                continue
+            else:
+                new_naissance+=naissance[i]
+        #print(new_naissance)
+        # Verifier si la date respecte le format jour/mois/année
+        format_string = "%d/%m/%y"
+        try:
+            new_naissance=datetime.strptime(new_naissance, format_string)
+            return True
+        except ValueError:
+            return False
 # veri=date_naissance_etudiant(date_naissance)
 # print(veri)
 
 
 
-#classe='  1 iem A'
+# classe=''
 def classe_etudiant(classe):
     if not classe:
         return False
     classe1=""
-    for i in range(len(classe)):
-        if classe[i]==' ':
+    classe2=""
+    classe2=classe.replace(" ","")
+    for i in range(len(classe2)):
+        if classe2[i]==' ':
             continue 
         else:
-            classe1+=classe[i]
+            classe1+=classe2[i]
     if classe1[0] in ['3','4','5','6']:
         #print(classe1)
         p3=r'3'
