@@ -152,60 +152,60 @@ while choice:
         
         code=input("Donner le code que vous voulez rechercher: ")
         for etudiant in donnees_invalides:
-            while code not in etudiant:
-                print("Ce code n'est pas dans la liste des donnees invalides.")
-                code=input("Donner le code que vous voulez rechercher: ")
+            # while code not in etudiant:
+            #     print("Ce code n'est pas dans la liste des donnees invalides.")
+            #     code=input("Donner le code que vous voulez rechercher: ")
             if etudiant[0]==code:
                 donnees_invalides.remove(etudiant)
-            
-        mod_numero=input("Donner son numero")
-        veri=numero_etudiant(numero)
-        while veri==False:
-            print("Donner un bon numéro.")
-            mod_numero=input("Donner son numero")
-            veri=numero_etudiant(numero)
+                mod_numero=input("Donner son numero")
+                veri=numero_etudiant(numero)
+                while veri==False:
+                    print("Donner un bon numéro.")
+                    mod_numero=input("Donner son numero")
+                    veri=numero_etudiant(numero)
+                
+                mod_nom=input("Donner son nom")
+                veri=nom_etudiant(nom)
+                while veri==False:
+                    print("Donner un bon nom.")
+                    mod_nom=input("Donner son nom")
+                    veri=nom_etudiant(nom)
+                
+                mod_prenom=input("Donner son prenom")
+                veri=prenom_etudiant(prenom)
+                while veri==False:
+                    print("Donner un bon prenom.")
+                    mod_prenom=input("Donner son prenom")
+                    veri=prenom_etudiant(prenom)
+                    
+                mod_date_naissance=input("Donner son date_naissance")
+                veri=date_naissance_etudiant(date_naissance)
+                while veri==False:
+                    print("Donner une bonne date_naissance.")
+                    mod_date_naissance=input("Donner son date_naissance")
+                    veri=date_naissance_etudiant(date_naissance)
+                    
+                mod_classe=input("Donner son classe")
+                veri=classe_etudiant(classe)
+                while veri==False:
+                    print("Donner une bonne classe.")
+                    mod_classe=input("Donner son classe")
+                    veri=classe_etudiant(classe)
+                    
+                mod_note=input("Donner son note")
+                veri=note_etudiant(note)
+                while veri==False:
+                    print("Donner une bonne note.")
+                    mod_note=input("Donner son note")
+                    veri=note_etudiant(note)
+                    
+                mod_etudiant=[code,mod_numero,mod_nom,mod_prenom,mod_date_naissance,mod_classe,mod_note]
+                donnees_valides.append(mod_etudiant) 
         
-        mod_nom=input("Donner son nom")
-        veri=nom_etudiant(nom)
-        while veri==False:
-            print("Donner un bon nom.")
-            mod_nom=input("Donner son nom")
-            veri=nom_etudiant(nom)
-        
-        mod_prenom=input("Donner son prenom")
-        veri=prenom_etudiant(prenom)
-        while veri==False:
-            print("Donner un bon prenom.")
-            mod_prenom=input("Donner son prenom")
-            veri=prenom_etudiant(prenom)
-            
-        mod_date_naissance=input("Donner son date_naissance")
-        veri=date_naissance_etudiant(date_naissance)
-        while veri==False:
-            print("Donner une bonne date_naissance.")
-            mod_date_naissance=input("Donner son date_naissance")
-            veri=date_naissance_etudiant(date_naissance)
-            
-        mod_classe=input("Donner son classe")
-        veri=classe_etudiant(classe)
-        while veri==False:
-            print("Donner une bonne classe.")
-            mod_classe=input("Donner son classe")
-            veri=classe_etudiant(classe)
-            
-        mod_note=input("Donner son note")
-        veri=note_etudiant(note)
-        while veri==False:
-            print("Donner une bonne note.")
-            mod_note=input("Donner son note")
-            veri=note_etudiant(note)
-            
-        mod_etudiant=[code,mod_numero,mod_nom,mod_prenom,mod_date_naissance,mod_classe,mod_note]
-        donnees_valides.append(mod_etudiant) 
-    else:
-        print("Vous n'avez pas fait le bon choix.")
-
-        
+            else:
+                print("Ce code n'est pas dans la liste des donnees invalides.")
+          
+      
 
     #exit()
         

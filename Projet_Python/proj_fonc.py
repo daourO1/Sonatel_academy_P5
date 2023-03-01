@@ -302,13 +302,15 @@ def recherche(valeur,donnee):
     #veri=numero_etudiant(valeur)
     for etudiant in donnee:
         
-        while valeur not in etudiant:
-            print("Ce numéro n'existe pas dans la base")
-            valeur=input("Donner un autre numéro: ")
+        # while etudiant[1]!=valeur:
+        #     print("Ce numéro n'existe pas dans la base")
+        #     valeur=input("Donner un autre numéro: ")
         # for etudiant in donnee:
-            if valeur==etudiant[1]:
-                var.append(etudiant)
-       
+        if etudiant[1]==valeur:
+            var.append(etudiant)
+        else:
+            print("Ce numéro n'existe pas dans la base")
+                
     return var
 
 ## Fonction trie
