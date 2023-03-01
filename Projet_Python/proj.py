@@ -86,7 +86,9 @@ while choice:
     if choix==1:
         print("1-D’afficher les informations Valide")
         veri=remplacer_notes_par_moyennes(donnees_valides)
-        print(tableau(veri))
+        verif=affichage_par_pagination(veri, pag=5)
+        print(verif)
+        # print(tableau(verif)) 
     elif choix==2:
         print("2-D’afficher les informations inValide")
         print(donnees_invalides)
@@ -150,12 +152,12 @@ while choice:
     elif choix==6:
         print("6-De modifier une information invalide ensuite le transférer dans la structure où se trouve les informations valides")
         
-        code=input("Donner le code que vous voulez rechercher: ")
+        numero=input("Donner le numéro que vous voulez rechercher: ")
         for etudiant in donnees_invalides:
             # while code not in etudiant:
             #     print("Ce code n'est pas dans la liste des donnees invalides.")
             #     code=input("Donner le code que vous voulez rechercher: ")
-            if etudiant[0]==code:
+            if etudiant[1]==numero:
                 donnees_invalides.remove(etudiant)
                 mod_numero=input("Donner son numero")
                 veri=numero_etudiant(numero)

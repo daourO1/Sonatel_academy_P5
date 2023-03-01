@@ -229,7 +229,7 @@ def moyenne(note):
     #print(moy_G)
     moyenne_G = moy_G / len(note4) 
     moyenne_G = round(moyenne_G, 3)
-    print(moyenne_G)
+    # print(moyenne_G)
     return moyenne_G
     # for etudiant in donnees_valides:
     #     code,numero,nom,prenom,date_naissance,classe,note=etudiant
@@ -320,6 +320,19 @@ def trie_etudiant(donnees_valides):
             if donnees_valides[i][6]< donnees_valides[j][6]:
                 donnees_valides[i], donnees_valides[j] = donnees_valides[j], donnees_valides[i]           
     return donnees_valides
+
+
+## pagination
+def affichage_par_pagination(donnees_valides, pag=5):
+    # pag est le nombre d'éléments à afficher 
+    nb_elements = len(donnees_valides)
+    nb_pages = (nb_elements + pag - 1) // pag
+
+    for page in range(nb_pages):
+        debut = page * pag
+        fin = min(debut + pag, nb_elements)
+        print(tableau(donnees_valides[debut:fin]))
+        print(f"Page {page + 1}/{nb_pages}:")
 
 
 ## Fonction transformation liste en XML

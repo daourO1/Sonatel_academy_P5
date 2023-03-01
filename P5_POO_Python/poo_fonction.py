@@ -4,14 +4,33 @@ import json
 import xml.etree.ElementTree as ET
 import csv
 
-class affichage_menu:
-    def affichage_menu():
-        print("   1-  D’afficher les informations Valide ")
-        print("   2-  D’afficher les informations invalide ")
-        print("   3-  D’afficher une information (par son numéro)")
-        print("   4-  D’afficher les cinq premierModificatios")
-        print("   5-  D’ajouter une information en vérifiant la validité des informations données.")
-        print("   6-  De modifier une information invalide ensuite le transférer dans la structure où se trouve les informations valides")
+
+# def affichage_menu():
+#     print("   1-  D’afficher les informations Valide ")
+#     print("   2-  D’afficher les informations invalide ")
+#     print("   3-  D’afficher une information (par son numéro)")
+#     print("   4-  D’afficher les cinq premierModificatios")
+#     print("   5-  D’ajouter une information en vérifiant la validité des informations données.")
+#     print("   6-  De modifier une information invalide ensuite le transférer dans la structure où se trouve les informations valides")
+
+class Menu:
+    def __init__(self):
+        self.options = [
+            "D’afficher les informations Valide",
+            "D’afficher les informations invalide",
+            "D’afficher une information (par son numéro)",
+            "D’afficher les cinq premierModificatios",
+            "D’ajouter une information en vérifiant la validité des informations données.",
+            "De modifier une information invalide ensuite le transférer dans la structure où se trouve les informations valides"
+        ]
+
+    def affichage_menu(self):
+        for i, option in enumerate(self.options, 1):
+            print(f"   {i}- {option}")
+# Affichache menu
+menu = Menu()
+menu.affichage_menu()
+
 
 # ## Fontion pour les numéros
 # #numero='12QSDF3'
