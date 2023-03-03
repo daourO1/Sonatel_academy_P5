@@ -103,23 +103,30 @@ class transformation_csv:
 # tab=t.csv_xml()
 # print(tab)
 class affichage:
-    def __init__(self,option):
-        self.options = [
-            "D’afficher les informations Valide",
-            "D’afficher les informations invalide",
-            "D’afficher une information (par son numéro)",
-            "D’afficher les cinq premierModificatios",
-            "D’ajouter une information en vérifiant la validité des informations données.",
-            "De modifier une information invalide ensuite le transférer dans la structure où se trouve les informations valides"
-        ]
+    def __init__(self,optionJ,optionX):
+        self.optionsJ = [
+            "Transformation données valides JSON en XML ",
+            "Transformation données valides JSON en CSV ",
+            "Transformation données invalides JSON en XML",
+            "Transformation données invalides JSON en CSV",
+            ]
+        self.optionsX = [
+            "Transformation données valides XML en JSON ",
+            "Transformation données valides XML en CSV ",
+            "Transformation données invalides XML en CSV",
+            "Transformation données invalides XML en JSON",
+            ]
     def en_tete(self):
         print()
         print(100*'-')
         print(30*' ',"⏩ ⏩ ⏩ ⏩ ⏩   MENU   ⏪ ⏪ ⏪ ⏪ ⏪ ")
         print(100*'-')
-    def affichage_menu(self):
-            for i, option in enumerate(self.options, 1):
-                print(f"   {i}- {option}")
+    def affichage_menuJ(self):
+            for i, optionJ in enumerate(self.optionsJ, 1):
+                print(f"   {i}- {optionJ}")
+    def affichage_menuX(self):
+            for i, optionX in enumerate(self.optionsX, 1):
+                print(f"   {i}- {optionX}")
 # menu = affichage("option")
 # menu.affichage_menu()
 
@@ -277,8 +284,14 @@ class verification:
                                 return False
         return True
     # Fonction Calcul moyen
+
+
+class note_moyenne:
+    def __init__(self,note,donnees_valides):
+        self.note=note
+        self.donnees_valides=donnees_valides
     def moyenne(self,note):
-        note1 = note.strip()
+        note1 = self.note.strip()
         note2 = note1.replace("]", "").replace("|", " ").replace(",", ".")
         note3 = note2.split("#")
         note4 = []
@@ -297,6 +310,7 @@ class verification:
                 devoirs = examens[0].split()
                 not_dev = [float(x) for x in devoirs]
                 #print(not_dev)
+            
                 moyenne = sum(not_dev) / len(not_dev)
                 #print(moyenne)
                 examen = examens[1]
@@ -305,32 +319,33 @@ class verification:
                 moy_G1=round(moy_G1,3)
                 #print(moy_G1)
                 moy_G += moy_G1
-        moyenne_G = moy_G / len(note4) 
-        moyenne_G = round(moyenne_G, 3)
-        print(moyenne_G)
-        return moyenne_G
-#     def verification():
+        
+        try:
+            moyenne_G = moy_G / len(note4) 
+            moyenne_G = round(moyenne_G, 3)
+            # print(moyenne_G)
+            return moyenne_G
+        except Exception:
+            pass
+        
+    def remplacer_notes_par_moyennes(self,donnees_valides):
+        new_donnees_valides = []
+        for etudiant in self.donnees_valides:
+            # code,numero,nom,prenom,date_naissance,classe,note=etudiant
+            
+            d=note_moyenne(self.note,self.donnees_valides)
+            moyenne_generale = d.moyenne(self.note)
+            etudiant["Moyenne Générale"]=moyenne_generale
+            # etudiant.pop("Note")
+            # print(etudiant)
+            # etudiant.append(etudiant["Moyenne Générale"])
+            new_donnees_valides.append(etudiant)
+        return new_donnees_valides
+
 
 
     
-# # # veri=nom_etudiant(nom)
-# # # print(veri)
-  
 
-    
-# # veri=date_naissance_etudiant(date_naissance)
-# # print(veri)
-
-
-
-# #classe='  1 iem A'
-    
-# # veri=classe_etudiant(classe)
-# # print(veri)
-
-    
-# # veri=note_etudiant(note)
-# # print(veri)
 
 # #note='Math[10|11:15] #Francais[7|12|8:13] #Anglais[13,5|9:15] #PC[11:9]  #SVT[12|9|16|11:12]  #HG[10:13]'
     
@@ -358,13 +373,6 @@ class verification:
 # # veri=moyenne(note)
 # # print(veri)
 
-# def remplacer_notes_par_moyennes(donnees_valides):
-#     new_donnees_valides = []
-#     for etudiant in donnees_valides:
-#         code,numero,nom,prenom,date_naissance,classe,note=etudiant
-#         moyenne_generale = moyenne(note)
-#         new_donnees_valides.append((code,numero,nom,prenom,date_naissance,classe, moyenne_generale))
-#     return new_donnees_valides
 
  
 # def tableau(donnee):
@@ -428,27 +436,50 @@ class verification:
 
 class transformation:
     ## Fonction transformation liste en XML
-    def liste_xml(donnees_valides,chemin_fich_xml):
-        # créer l'élément racine
-        root = ET.Element("donnees_valides")
+    def liste_xml(self,donnees_valides,chemin_fich_xml):
+        with open(chemin_fich_xml, 'w') as xml_file:
+            xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>\n<Etudiants>")
+            
+            donneeX=""
+            for etudiant in donnees_valides:
+                
+                dataX='''
+                <etudiant>
+                        <CODE> %s </CODE>
+                        <Numero> %s </Numero>
+                        <Nom> %s </Nom>
+                        <Prenom> %s </Prenom>
+                        <Date_de_naissance> %s </Date_de_naissance>
+                        <Classe> %s </Classe>
+                        <Moyenne Generale> %s </Moyenne Generale> 
+                </etudiant>''' %(etudiant["CODE"],etudiant["Numero"],etudiant["Nom"],etudiant["Prénom"],etudiant["Date de naissance"],etudiant["Classe"],etudiant["Moyenne Generale"])
+                donneeX+=dataX
+                
+                # écrire les données XML dans un fichier
+            xml_file.write(donneeX)
+            xml_file.write("\n</Etudiants>")
+            #print("Les données XML: \n",donneeX)
 
-        # ajouter les éléments enfants avec les valeurs
-        for row in donnees_valides:
-            row_elem = ET.SubElement(root, "row")
-            for i, value in enumerate(row):
-                col_elem = ET.SubElement(row_elem, "col" + str(i))
-                col_elem.text = str(value)
+        # # créer l'élément racine
+        # root = ET.Element("donnees_valides")
 
-        # écrire le fichier XML
-        tree = ET.ElementTree(root)
-        tree.write(chemin_fich_xml)
+        # # ajouter les éléments enfants avec les valeurs
+        # for row in donnees_valides:
+        #     row_elem = ET.SubElement(root, "row")
+        #     for i, value in enumerate(row):
+        #         col_elem = ET.SubElement(row_elem, "col" + str(i))
+        #         col_elem.text = str(value)
 
-        # lire le contenu du fichier et l'afficher
-        with open(chemin_fich_xml, 'r') as xml_file:
-            content = xml_file.read()
-            print(content)
+        # # écrire le fichier XML
+        # tree = ET.ElementTree(root)
+        # tree.write(chemin_fich_xml)
+
+        # # lire le contenu du fichier et l'afficher
+        # with open(chemin_fich_xml, 'r') as xml_file:
+        #     content = xml_file.read()
+        #     print(content)
     ## Fonction transformation liste en JSON
-    def liste_json(donnees_valides,chemin_fich_json):
+    def liste_json(self,donnees_valides,chemin_fich_json):
         donnees_valides_dict = []
         for row in donnees_valides:
             row_dict = {}
@@ -470,14 +501,67 @@ class transformation:
     # liste_json(donnees_valides,json_file_path)
 
     ## Fonction transformation liste en CSV
-    def liste_csv(donnees_valides, chemin_fich_csv):
-        # écrire le fichier CSV
-        with open(chemin_fich_csv, 'w', newline='') as csv_file:
-            writer = csv.writer(csv_file)
-            for etudiant in donnees_valides:
-                writer.writerow(etudiant)
+    def liste_csv(self,donnees_valides, chemin_fich_csv):
+        # Récupérer les clés de tous les dictionnaires dans la liste
+       field_names = set().union(*donnees_valides)
     
-        # lire le contenu du fichier et l'afficher
-        with open(chemin_fich_csv, 'r') as csv_file:
-            content = csv_file.read()
-            print(content)
+       with open(chemin_fich_csv, mode='w', newline='') as csv_file:
+           writer = csv.DictWriter(csv_file, fieldnames=field_names)
+           writer.writeheader()  # Écrire les noms des colonnes dans le fichier CSV
+    
+           # Écrire chaque dictionnaire dans la liste en tant que ligne dans le fichier CSV
+           for etudiant in donnees_valides:
+               writer.writerow(etudiant)
+        # # écrire le fichier CSV
+        # with open(chemin_fich_csv, 'w', newline='') as csv_file:
+        #     writer = csv.writer(csv_file)
+        #     for etudiant in donnees_valides:
+        #         writer.writerow(etudiant)
+    
+        # # lire le contenu du fichier et l'afficher
+        # with open(chemin_fich_csv, 'r') as csv_file:
+        #     content = csv.DictReader(csv_file)
+        #     print(content)
+            
+            
+            
+            # with open(chemin_fich_csv, 'r') as csv_file:
+            #     # créer un lecteur CSV
+            #     csv_reader = csv.DictReader(csv_file)
+            #     # initialiser une liste pour stocker les données
+            #     donneesJ = []
+            #     # parcourir les lignes du fichier CSV
+            #     for row in csv_reader:
+            #         # ajouter la ligne à la liste des données
+            #         donneesJ.append(row)
+            # # ouvrir le fichier JSON en mode écriture
+            # with open(chemin_fich_json, 'w') as json_file:
+            #     # écrire les données au format JSON dans le fichier
+            #     dataJ=json.dumps(donneesJ)
+            #     json_file.write(dataJ)
+            #     dataJ=json.loads(dataJ)
+            # return dataJ
+            
+            
+    def listeI_xml(self,donnees_invalides,chemin_fich_xml):
+        with open(chemin_fich_xml, 'w') as xml_file:
+            xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>\n<Etudiants>")
+            
+            donneeX=""
+            for etudiant in donnees_invalides:
+                
+                dataX='''
+                <etudiant>
+                        <CODE> %s </CODE>
+                        <Numero> %s </Numero>
+                        <Nom> %s </Nom>
+                        <Prenom> %s </Prenom>
+                        <Date_de_naissance> %s </Date_de_naissance>
+                        <Classe> %s </Classe>
+                        <Note> %s </Note> 
+                </etudiant>''' %(etudiant["CODE"],etudiant["Numero"],etudiant["Nom"],etudiant["Prénom"],etudiant["Date de naissance"],etudiant["Classe"],etudiant["Note"])
+                donneeX+=dataX
+                
+                # écrire les données XML dans un fichier
+            xml_file.write(donneeX)
+            xml_file.write("\n</Etudiants>")
