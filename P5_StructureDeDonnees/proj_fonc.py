@@ -62,7 +62,7 @@ def nom_etudiant(nom):
   
 
 ## Fonction date de naissance
-#date_naissance='16/08/99'
+date_naissance='13/04/12 '
 def date_naissance_etudiant(date_naissance):
     if date_naissance!="":
         # return False
@@ -80,7 +80,7 @@ def date_naissance_etudiant(date_naissance):
                 continue 
             else:
                 date+=date_naissance[i]
-        # print(date)
+        print(date)
         date=date_naissance
         # vérifie si le premier caractère n'est pas un chiffre
         if not date[0].isnumeric() and date!="":  
@@ -88,19 +88,22 @@ def date_naissance_etudiant(date_naissance):
             date_new = date[1:]  
         else:
             date_new=date
-        #print(date_new)
+        print(date_new)
         # Créer une table de traduction qui remplace tous les caractères de la liste c par /
         table = str.maketrans(dict.fromkeys(c, '/'))
         # Appliquer la table de traduction à la chaîne de caractères new_date
         naissance = date_new.translate(table)
-        #print(naissance)
+        print(naissance)
         # Supprime les '/' inutiles
         for i in range(len(naissance)):
             if naissance[i-1]=='/' and naissance[i]=='/':
                 continue
             else:
                 new_naissance+=naissance[i]
-        #print(new_naissance)
+            if new_naissance[-1]=="/":
+                continue
+                # new_naissance=new_naissance[]
+        print(new_naissance)
         # Verifier si la date respecte le format jour/mois/année
         format_string = "%d/%m/%y"
         try:
@@ -108,49 +111,53 @@ def date_naissance_etudiant(date_naissance):
             return True
         except ValueError:
             return False
-# veri=date_naissance_etudiant(date_naissance)
-# print(veri)
+veri=date_naissance_etudiant(date_naissance)
+print(veri)
 
 
 
 # classe=''
 def classe_etudiant(classe):
-    if not classe:
-        return False
-    classe1=""
-    classe2=""
-    classe2=classe.replace(" ","")
-    for i in range(len(classe2)):
-        if classe2[i]==' ':
-            continue 
-        else:
-            classe1+=classe2[i]
-    if classe1[0] in ['3','4','5','6']:
-        #print(classe1)
-        p3=r'3'
-        p4=r'4'
-        p5=r'5'
-        p6=r'6'
-        classe_p3=re.match(p3, classe1)
-        classe_p4=re.match(p4, classe1)
-        classe_p5=re.match(p5, classe1)
-        classe_p6=re.match(p6, classe1)
-        if classe_p3:
-            var=re.sub(r'[3]([a-z]+)','3eme',classe1)
-        elif classe_p4:
-            var=re.sub(r'[4]([a-z]+)','4eme',classe1)
-        elif classe_p5:
-            var=re.sub(r'[5]([a-z]+)','5eme',classe1)
-        elif classe_p6:
-            var=re.sub(r'[6]([a-z]+)','6eme',classe1)
-        #print(var)
-        if var[-1] in ['A','B']:
-            return True
+    try:
+        
+        if not classe:
+            return False
+        classe1=""
+        classe2=""
+        classe2=classe.replace(" ","")
+        for i in range(len(classe2)):
+            if classe2[i]==' ':
+                continue 
+            else:
+                classe1+=classe2[i]
+        if classe1[0] in ['3','4','5','6']:
+            #print(classe1)
+            p3=r'3'
+            p4=r'4'
+            p5=r'5'
+            p6=r'6'
+            classe_p3=re.match(p3, classe1)
+            classe_p4=re.match(p4, classe1)
+            classe_p5=re.match(p5, classe1)
+            classe_p6=re.match(p6, classe1)
+            if classe_p3:
+                var=re.sub(r'[3]([a-z]+)','3eme',classe1)
+            elif classe_p4:
+                var=re.sub(r'[4]([a-z]+)','4eme',classe1)
+            elif classe_p5:
+                var=re.sub(r'[5]([a-z]+)','5eme',classe1)
+            elif classe_p6:
+                var=re.sub(r'[6]([a-z]+)','6eme',classe1)
+            #print(var)
+            if var[-1] in ['A','B']:
+                return True
+            else:
+                return False
         else:
             return False
-    else:
+        return True
+    except :
         return False
-    return True
 # veri=classe_etudiant(classe)
 # print(veri)
 

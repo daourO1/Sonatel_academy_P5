@@ -101,19 +101,116 @@ while booleen:
                 chemin_fich_csv = "Donnees_validesJ.csv"
                 mod=transformation()
                 mod.liste_csv(dv,chemin_fich_csv)
+            elif choix==3:
+                print("Transformation données invalides JSON en XML")
+                chemin_fich_xml = "Donnees_invalidesJ.xml"
+                mod=transformation()
+                mod.liste_xmlI(donnees_invalidesJ,chemin_fich_xml)
+            elif choix==4:
+                print("Transformation données invalides JSON en CSV")
+                chemin_fich_csv = "Donnees_invalidesJ.csv"
+                mod=transformation()
+                mod.liste_csv(donnees_invalidesJ,chemin_fich_csv)
 
     elif fichier=='XML':
         booleen=False
-        tab=[]
+        tabX=[]
         t=transformation_csv()
-        tab=t.csv_xml()
-        print(tab)
-        menu = affichage("option")
-        menu.en_tete()
-        menu.affichage_menu()
-        print(100*'-')
-        print()
-        
+        tabX=t.csv_xml()
+        # print(tabX)
+        for etudiant in tabX:
+            code=etudiant["CODE"]
+            numero=etudiant["Numero"]
+            nom=etudiant["Nom"]
+            prenom=etudiant["Prenom"]
+            date_naissance=etudiant["Date_de_naissance"]
+            classe=etudiant["Classe"]
+            note=etudiant["Note"]
+            cpt=0
+            # Vérification de la validité de numéro etudiant
+            veri=verification(numero,nom,prenom,date_naissance,classe,note)
+            if veri.numero_etudiant(numero)==True:
+                cpt+=1
+            else:
+                etudiant["Motif"]='Numéro invalide'
+                #donnees_invalides.append(etudiant)
+                # Vérification de la validité de nom etudiant
+            if veri.nom_etudiant(nom)==True:
+                cpt+=1
+            else:
+                etudiant["Motif"]="Nom invalide"
+                #donnees_invalides.append(etudiant)
+                # Vérification de la validité de prénom etudiant
+            if veri.prenom_etudiant(prenom)==True:
+                cpt+=1
+            else:
+                etudiant["Motif"]="Prénom invalide"
+                #donnees_invalides.append(etudiant)
+                # Vérification de la validité de la date de naissance de etudiant
+            if veri.date_naissance_etudiant(date_naissance)==True:
+                cpt+=1
+            else: 
+                etudiant["Motif"]="Date de naissance invalide"
+                #donnees_invalides.append(etudiant)
+                # Vérification de la validité de classe etudiant
+            if veri.classe_etudiant(classe)==True:
+                cpt+=1
+            else:
+                etudiant["Motif"]="Classe invalide"
+                #donnees_invalides.append(etudiant)
+                # Vérification de la validité de note etudiant
+            if veri.note_etudiant(note)==True:
+                cpt+=1
+            else:
+                etudiant["Motif"]="Note invalide"
+                #donnees_invalides.append(etudiant)
+                    # Si toutes les données sont valides, on ajoute les données à la liste des données valides
+            if cpt==(len(etudiant)-1):
+                donnees_validesX.append(etudiant)
+            else:
+                donnees_invalidesX.append(etudiant)
+        # print("Les donnees invalide sont: \n",donnees_invalidesJ)
+        # print(len(donnees_invalides))
+        # # print()
+        # print("Les donnees valide sont: \n",donnees_validesJ)
+        # print(len(donnees_valides))
+        for etudiant in donnees_validesX:
+            note=etudiant["Note"]
+            d=note_moyenne(note,donnees_validesX)
+            d.moyenne(note)
+            d.remplacer_notes_par_moyennes(donnees_validesX)
+            etudiant.pop("Note")
+        dv=d.remplacer_notes_par_moyennes(donnees_validesX)
+        # print(dv)
+        choice=True
+        while choice:
+            menu = affichage("optionJ","optionX")
+            menu.en_tete()
+            menu.affichage_menuJ()
+            print(100*'-')
+            print()
+            choix=int(input("Vous voulez entrez dans quel menu: "))
+            if choix==1:
+                print("Transformation données valides XML en JSON ")
+                chemin_fich_json = "Donnees_validesX.json"
+                mod=transformation()
+                mod.liste_json(dv,chemin_fich_json)
+            elif choix==2:
+                print("Transformation données valides XML en CSV")
+                chemin_fich_csv = "Donnees_validesX.csv"
+                mod=transformation()
+                mod.liste_csv(dv,chemin_fich_csv)
+            elif choix==3:
+                print("Transformation données invalides XML en JSON")
+                chemin_fich_json = "Donnees_invalidesX.json"
+                mod=transformation()
+                mod.liste_json(donnees_invalidesX,chemin_fich_json)
+            elif choix==4:
+                print("Transformation données invalides XML en CSV")
+                chemin_fich_csv = "Donnees_invalidesX.csv"
+                mod=transformation()
+                mod.liste_csv(donnees_invalidesX,chemin_fich_csv)
+
     else:
         print("Choisisez entre JSON et CSV")
                 

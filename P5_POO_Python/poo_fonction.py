@@ -168,45 +168,52 @@ class verification:
             return False
     ## Fonction date de naissance
     def date_naissance_etudiant(self,date_naissance):
-        if not date_naissance:
-            return False
-        c=['/','-','_',',','|',':','.',' ']
-        date=''
-        date1=''
-        date_naissance1=""
-        date_new=""
-        new_date=""
-        naissance=""
-        new_naissance=""
-        # Supprime les espace inutiles
-        for i in range(len(date_naissance)):
-            if date_naissance[i]==' ' and date_naissance[i+1]==' ':
-                continue 
+        if date_naissance!="":
+            # return False
+            c=['/','-','_',',','|',':','.',' ']
+            date=''
+            date1=''
+            date_naissance1=""
+            date_new=""
+            new_date=""
+            naissance=""
+            new_naissance=""
+            # Supprime les espace inutiles
+            for i in range(len(date_naissance)-1):
+                if date_naissance[i]==' ' and date_naissance[i+1]==' ':
+                    continue 
+                else:
+                    date+=date_naissance[i]
+            # print(date)
+            date=date_naissance
+            # vérifie si le premier caractère n'est pas un chiffre
+            if not date[0].isnumeric() and date!="":  
+                # supprime le premier caractère de la chaîne
+                date_new = date[1:]  
             else:
-                date+=date_naissance[i]
-        # vérifie si le premier caractère n'est pas un chiffre
-        if not date[0].isdigit():  
-            # supprime le premier caractère de la chaîne
-            date_new = date[1:]  
-        else:
-            date_new=date
-        # Créer une table de traduction qui remplace tous les caractères de la liste c par /
-        table = str.maketrans(dict.fromkeys(c, '/'))
-        # Appliquer la table de traduction à la chaîne de caractères new_date
-        naissance = date_new.translate(table)
-        # Supprime les '/' inutiles
-        for i in range(len(naissance)):
-            if naissance[i]=='/' and naissance[i+1]=='/':
-                continue
-            else:
-                new_naissance+=naissance[i]
-        # Verifier si la date respecte le format jour/mois/année
-        format_string = "%d/%m/%y"
-        try:
-            new_naissance=datetime.strptime(new_naissance, format_string)
-            return True
-        except ValueError:
-            return False
+                date_new=date
+            # print(date_new)
+            # Créer une table de traduction qui remplace tous les caractères de la liste c par /
+            table = str.maketrans(dict.fromkeys(c, '/'))
+            # Appliquer la table de traduction à la chaîne de caractères new_date
+            naissance = date_new.translate(table)
+            # print(naissance)
+            # Supprime les '/' inutiles
+            for i in range(len(naissance)-1):
+                if naissance[i]=='/' and naissance[i+1]=='/':
+                    continue
+                else:
+                    new_naissance+=naissance[i]
+                # if new_naissance[-1]=="/":
+                #     del(new_naissance[-1])
+            # print(new_naissance)
+            # Verifier si la date respecte le format jour/mois/année
+            format_string = "%d/%m/%y"
+            try:
+                new_naissance=datetime.strptime(new_naissance, format_string)
+                return True
+            except ValueError:
+                return False
         
     def classe_etudiant(self,classe):
         if not classe:
@@ -460,24 +467,32 @@ class transformation:
             xml_file.write("\n</Etudiants>")
             #print("Les données XML: \n",donneeX)
 
-        # # créer l'élément racine
-        # root = ET.Element("donnees_valides")
-
-        # # ajouter les éléments enfants avec les valeurs
-        # for row in donnees_valides:
-        #     row_elem = ET.SubElement(root, "row")
-        #     for i, value in enumerate(row):
-        #         col_elem = ET.SubElement(row_elem, "col" + str(i))
-        #         col_elem.text = str(value)
-
-        # # écrire le fichier XML
-        # tree = ET.ElementTree(root)
-        # tree.write(chemin_fich_xml)
-
-        # # lire le contenu du fichier et l'afficher
-        # with open(chemin_fich_xml, 'r') as xml_file:
-        #     content = xml_file.read()
-        #     print(content)
+    ## Fonction transformation liste en XML
+    def liste_xmlI(self,donnees_valides,chemin_fich_xml):
+        with open(chemin_fich_xml, 'w') as xml_file:
+            xml_file.write("<?xml version='1.0' encoding='ISO-8859-1' standalone='no'?>\n<Etudiants>")
+            
+            donneeX=""
+            for etudiant in donnees_valides:
+                
+                dataX='''
+                <etudiant>
+                        <CODE> %s </CODE>
+                        <Numero> %s </Numero>
+                        <Nom> %s </Nom>
+                        <Prenom> %s </Prenom>
+                        <Date_de_naissance> %s </Date_de_naissance>
+                        <Classe> %s </Classe>
+                        <Note> %s </Note> 
+                </etudiant>''' %(etudiant["CODE"],etudiant["Numero"],etudiant["Nom"],etudiant["Prénom"],etudiant["Date de naissance"],etudiant["Classe"],etudiant["Moyenne Generale"])
+                donneeX+=dataX
+                
+                # écrire les données XML dans un fichier
+            xml_file.write(donneeX)
+            xml_file.write("\n</Etudiants>")
+            #print("Les données XML: \n",donneeX)
+            
+            
     ## Fonction transformation liste en JSON
     def liste_json(self,donnees_valides,chemin_fich_json):
         donnees_valides_dict = []
