@@ -115,18 +115,37 @@ note_etudiant = function(note){
       matiere = strsplit(matiere,"\\[")
       # print(matiere)
       # print(matiere[[1]][2])
-      for (i in length(matiere)){
+      for (i in 1:length(matiere)){
         if (grepl("[[:alpha:]]",matiere[[i]][1])){
           notes=strsplit(matiere[[i]][2],":")
-          print(notes[[1]][2])
+          print(notes[[1]])
+          if (length(notes[[1]])==2){
+            if (notes[[1]][2]<=20){
+              # return(T)
+              note_dev=strsplit(notes[[1]][1],"\\|")
+              # print(note_dev[[1]])
+              for (i in range(length(note_dev))){
+                if (note_dev[[1]][i]<=20){
+                  # print(note_dev[[1]][1])
+                  return (T)
+                }else{
+                  return (F)
+                }
+              }
+            }else{
+              return (F)
+            }
+          }else{
+            return (F)
+          }
         }else{
           return (F)
         }
-      
+        
       }
       # print(matiere)
     }
   }
 }
-note_etudiant('Math[10|11:15] #Francais[7|12|8:13] #Anglais[13,5|9:15] #PC[11:9]  #SVT[12|9|16|11:12]  #HG[10:13]')
+note_etudiant('Math[10|11:15] #Francais[:13] #Anglais[13,5|9:15] #PC[11:9]  #HG[10:13]  #SVT[12|9|16|21:12]')
 
