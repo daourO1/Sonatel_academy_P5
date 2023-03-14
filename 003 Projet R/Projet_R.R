@@ -104,48 +104,64 @@ classe_etudiant = function(classe) {
 # sapply(note, strsplit(""))
 
 # Verification de note
-note_etudiant = function(note){
-  if (is.na(note) || note==""){
+note_etudiant = function(note) {
+  liste = list()
+  vide = list()
+  if (is.na(note) || note == "") {
     return (F)
-  }else{
-    note=trimws(note)
-    note=gsub("]","",note)
-    note=strsplit(note,"#")
-    for (matiere in note){
-      matiere = strsplit(matiere,"\\[")
-      # print(matiere)
-      # print(matiere[[1]][2])
-      for (i in 1:length(matiere)){
-        if (grepl("[[:alpha:]]",matiere[[i]][1])){
-          notes=strsplit(matiere[[i]][2],":")
-          print(notes[[1]])
-          if (length(notes[[1]])==2){
-            if (notes[[1]][2]<=20){
-              # return(T)
-              note_dev=strsplit(notes[[1]][1],"\\|")
-              # print(note_dev[[1]])
-              for (i in range(length(note_dev))){
-                if (note_dev[[1]][i]<=20){
-                  # print(note_dev[[1]][1])
-                  return (T)
-                }else{
-                  return (F)
-                }
-              }
-            }else{
-              return (F)
-            }
-          }else{
-            return (F)
-          }
-        }else{
-          return (F)
-        }
-        
-      }
-      # print(matiere)
+  } else{
+    note = trimws(note)
+    note = gsub(",", ".", note)
+    note = gsub("]", "", note)
+    note = strsplit(note, "#")
+    note_finale = list()
+    
+    for (i in c(1:length(note[[1]]))) {
+      matieres = note[[1]][i]
+      matiere_et_note = strsplit(matieres, "\\[")
+      matiere_et_note = matiere_et_note[[1]]
+      # print(matiere_et_note)
+      
+      nom_matiere = matiere_et_note[1]
+      nom_matiere = paste0(nom_matiere, ":")
+      # print(nom_matiere)
+      
+      devoire_exam = matiere_et_note[2]
+      devoire_exam_separe = strsplit(devoire_exam, ":")
+      # print(devoire_exam_separe)
+      
+      devoir = devoire_exam_separe[[1]][1]
+      # devoir = as.character(devoir)
+      exam = devoire_exam_separe[[1]][2]
+      # print(devoir)
+      # print(exam)
+      
+      devoir_separe = strsplit(devoir, "\\|")[[1]]
+      
+      # print(typeof(devoir_separe))
+      
+      note_finale = c(note_finale, devoir_separe, exam)
     }
+    note_finale = as.character(note_finale)
+    # print(note_finale)
+    for (i in c(1:length(note_finale))) {
+      if (as.numeric(note_finale[i]) > 20 &&
+          as.numeric(note_finale[i]) < 0) {
+        return (F)
+      }
+    }
+    return (T)
   }
 }
-note_etudiant('Math[10|11:15] #Francais[:13] #Anglais[13,5|9:15] #PC[11:9]  #HG[10:13]  #SVT[12|9|16|21:12]')
-
+# note_etudiant('Math[10|11:15] #Francais[:13] #Anglais[13,5|9:15] #PC[11:9]  #HG[10:13]  #SVT[12|9|16|11:12]')
+donnee = read.csv("Donnees_Projet_Python_DataC5.csv",sep=",",dec=",")
+v=donnee[,7]
+v[23]
+compt=0
+for (i in c(1:length(v))){
+  if (note_etudiant(v[i])==TRUE){
+    print(v[i])
+    compt=compt+1
+  }
+}
+compt
