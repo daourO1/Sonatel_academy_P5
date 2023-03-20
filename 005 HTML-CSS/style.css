@@ -1,6 +1,18 @@
+h1 {
+    background-color: red;
+}
 h2,h3 {
     color: rgb(55, 0, 255);
 }
 .red {color: red
 
+}
+.couleured {color: red;
+font-size: 2em;
+font-weight: 400;
+}
+.en-tete {color: rgb(255, 0, 255);
+text-decoration: underline;}
+body {
+    background-image: linear-gradient(to bottom, rgb(236, 229, 229),rgb(255, 127, 0));
 }
