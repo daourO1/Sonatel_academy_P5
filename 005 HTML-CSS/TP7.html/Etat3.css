@@ -1,0 +1,68 @@
+.icone {
+    margin-right: 1775px;
+    padding-top: 20px;
+     
+ }
+ h1 {
+     font-size: 4em;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     text-align: center;
+ }   
+ aside {
+     background-color: rgb(96, 96, 245);
+     padding-bottom: 50px;
+     text-align: center;
+ }
+ .mod {
+     color:rgb(247, 243, 247);
+     background-color: rgb(236, 84, 218);
+     margin-left: 800px;
+     margin-right: 800px;
+ }
+ section {
+     text-align: justify;
+     margin-left: 400px;
+     margin-right: 400px;
+ }
+
+
+ form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+ }
+ input  {
+    padding: 20px;
+    padding-right: 200px;
+    border: 1px solid;
+ }
+
+.formulaire{
+    background-color: white;
+    border: solid;
+    position: absolute;
+    top: 271px;
+    left: 701px;
+    
+ }
+ .debut {
+    background-color: rgb(75, 75, 228);
+    padding: 8px;
+ }
+ .form {
+    margin-left: 15px;
+    margin-right: 15px;
+ }
+ .fin {
+    background-color: rgb(247, 137, 216);
+    margin-left: 5px;
+    margin-right: 375px;
+ }
+ 
+ .floux {
+    background-color: rgba(0,0,0,0.5);
+    width: 2000px;
+    height: 2000px;
+    position: absolute;
+    top: -12px;
+ }

@@ -1,0 +1,11 @@
+
+
+
+.couleured {color: red;
+font-size: 2em;
+font-weight: 400;
+}
+
+body {
+    background-image: linear-gradient(to bottom, rgb(236, 229, 229),rgb(255, 127, 0));
+}

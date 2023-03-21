@@ -1,0 +1,47 @@
+.divise {
+    display: flex;
+    flex-basis: 40%;
+    flex-basis: 60%;
+}
+
+aside {
+    background-color: rgb(96, 96, 245);
+    text-align: left;
+}
+
+header {
+    background-color: rgb(96, 96, 245);
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.profil img {
+    width: 90px;
+    object-fit: contain;
+    border-radius: 50px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.icone {
+    margin-right: 1775px;
+    padding-top: 20px;
+     
+ }
+ h1 {
+     font-size: 4em;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     text-align: center;
+ }   
+ 
+ .mod {
+     color:rgb(247, 243, 247);
+     background-color: rgb(236, 84, 218);
+     margin-left: 800px;
+     margin-right: 800px;
+ }
+ section {
+     text-align: justify;
+     margin-left: 400px;
+     margin-right: 400px;
+ }
