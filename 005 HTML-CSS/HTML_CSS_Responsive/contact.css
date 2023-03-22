@@ -1,0 +1,77 @@
+
+/* En tete  */
+.en_tete {
+    background-color: #74C69D;
+    display: flex;  
+    padding: 30px;  
+}
+.M {
+    margin-left: 1100px;
+}
+.menu {
+    display: inline-block;
+    color: white;
+    margin-left: 30px;
+}
+.logo {
+    margin-left: 100px;
+}
+
+/* Bas de page */
+footer {
+    margin-top: 195px;
+    background-color: #74C69D;
+    display: flex; 
+    padding: 30px;
+}
+.reseau {
+    margin-left: 100px;
+}
+.copiry {
+    display: inline-block;
+    color: white;
+    margin-left: 1100px;
+}
+
+/* Le Contenu */
+.contacts {
+    text-align: center;
+}
+.info {
+    display: flex;
+    flex: 40%;
+    flex: 80%;
+}
+
+.ident {
+    background-color: white;
+    border: solid;
+    position: absolute;
+    top: 369px;
+    left: 340px;
+    /* margin-left: -367px; */
+}
+input  {
+    padding: 30px;
+    padding-right: 300px;
+    
+}
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.bas {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-bottom: 1px;
+}
+.maps {
+    margin-left: 1103px;
+    margin-top: 170px;
+}
+.form {
+    margin-left: 15px;
+    margin-right: 15px;
+}
