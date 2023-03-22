@@ -18,7 +18,7 @@
 
 /* Bas de page */
 footer {
-    margin-top: 195px;
+    margin-top: 150px;
     background-color: #74C69D;
     display: flex; 
     padding: 30px;
@@ -30,4 +30,27 @@ footer {
     display: inline-block;
     color: white;
     margin-left: 1100px;
+}
+
+/* Le Contenu */
+.service {
+    text-align: center;
+}
+.plan {
+    color: #74C69D;
+}
+.info {
+    display: flex;
+}
+.s1 {
+    margin-left: 360px;
+    margin-top: 141px;
+}
+.s2 {
+    margin-left: 300px;
+    margin-top: 141px;
+}
+.s3 {
+    margin-left: 326px;
+    margin-top: 141px;
 }

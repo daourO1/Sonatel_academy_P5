@@ -1,0 +1,70 @@
+/* En tete  */
+.en_tete {
+    background-color: #74C69D;
+    display: flex;  
+    padding: 30px;  
+}
+.M {
+    margin-left: 1100px;
+}
+.menu {
+    display: inline-block;
+    color: white;
+    margin-left: 30px;
+}
+.logo {
+    margin-left: 100px;
+}
+
+/* Bas de page */
+footer {
+    margin-top: 150px;
+    background-color: #74C69D;
+    display: flex; 
+    padding: 30px;
+}
+.reseau {
+    margin-left: 100px;
+}
+.copiry {
+    display: inline-block;
+    color: white;
+    margin-left: 1100px;
+}
+
+/* Le Contenu */
+.portfolio {
+    text-align: center;
+}
+.plan {
+    color: #74C69D;
+}
+/* .info {
+    display: flex;
+} */
+.p1 {
+    margin-left: 196px;
+    margin-top: 56px;
+}
+.p2 {
+    margin-left: 191px;
+    margin-top: 41px;
+}
+.p3 {
+    margin-left: 194px;
+    margin-top: 48px;
+}
+.p4 {
+    margin-left: 194px;
+    margin-top: 21px;
+}
+.fin {
+    color: white;
+    text-align: center;
+    background-color: black;
+    margin-left: 800px;
+    margin-right: 800px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 50px;
+}

@@ -39,8 +39,7 @@ footer {
 }
 .info {
     display: flex;
-    flex: 40%;
-    flex: 80%;
+    
 }
 
 .ident {
