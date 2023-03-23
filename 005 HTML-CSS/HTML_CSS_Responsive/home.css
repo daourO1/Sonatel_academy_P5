@@ -1,19 +1,45 @@
 /* En tete  */
 .en_tete {
-    background-color: #74C69D;
-    display: flex;  
+    background-color: #74C69D; 
     padding: 30px;  
 }
+.entete1 {
+    display: flex;
+}
+.logo {
+    margin-left: 100px;
+}
 .M {
-    margin-left: 1100px;
+    margin-left: 1022px;
 }
 .menu {
     display: inline-block;
     color: white;
     margin-left: 30px;
 }
-.logo {
-    margin-left: 100px;
+.entete2 {
+    display: flex;
+}
+.texte {
+    color: white;
+    text-align: justify;
+    width: 25em;
+    margin-left: 80px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+}
+.explore {
+    color: black;
+    text-align: center;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 300px;
+}
+.image {
+    margin-left: 749px;
+    margin-top: 71px;
 }
 
 /* Bas de page */
@@ -31,3 +57,107 @@ footer {
     color: white;
     margin-left: 1100px;
 }
+
+/* section */
+.texte1 {
+    margin-top: 100px;
+    text-align: center;
+    width: 25em;
+    margin-left: 720px;
+}
+.partners {
+    color: #74C69D;
+}
+.image1 {
+    display:flex;
+    margin-top: 50px;
+
+}
+.logo1 {
+    margin-left: 0px;
+}
+.logo2 {
+    margin-left: 160px;
+    margin-top: 10px;
+}
+.logo3 {
+    margin-left: 125px;
+}
+.logo4 {
+    margin-left: 150px;
+}
+.logo5 {
+    margin-left: 150px;
+} 
+.img1 {
+    margin-top: 50px;
+}
+.more {
+    color: white;
+    text-align: center;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 850px;
+    margin-left: 850px;
+}
+.partie3 {
+    display: flex;
+    margin-top: 100px;
+}
+.partie3_texte {
+    width: 25em;
+    margin-left: 300px;
+}
+.image1 {
+    margin-left: 360px;
+}
+.more1 {
+    color: white;
+    text-align: center;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 250px;
+}
+.partie4 {
+    display: flex;
+    margin-top: 300px;
+}
+.partie4_texte {
+    width: 25em;
+    margin-left: 300px;
+}
+.image2 {
+    margin-left: 360px;
+}
+.more2 {
+    color: white;
+    text-align: center;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 250px;
+}
+.texte2 {
+    margin-top: 200px;
+    text-align: center;
+    width: 25em;
+    margin-left: 720px;
+}
+.team {
+    color: #74C69D;
+}
+.partie5 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.partie5 .image4 {
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+  
