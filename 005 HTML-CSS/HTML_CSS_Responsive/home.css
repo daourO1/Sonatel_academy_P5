@@ -1,32 +1,33 @@
 /* En tete  */
 .en_tete {
     background-color: #74C69D; 
-    padding: 30px;  
+    /* padding: 1,64%;   */
 }
 .entete1 {
     display: flex;
+    justify-content: space-between;
+    padding:3% 5%;
 }
-.logo {
-    margin-left: 100px;
-}
-.M {
-    margin-left: 1022px;
-}
+
 .menu {
     display: inline-block;
     color: white;
     margin-left: 30px;
 }
+.icon {
+    display: none;
+}
 .entete2 {
     display: flex;
+    justify-content: space-between;
 }
 .texte {
     color: white;
     text-align: justify;
     width: 25em;
-    margin-left: 80px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-left: 4%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     
 }
 .explore {
@@ -37,99 +38,89 @@
     padding-bottom: 5px;
     margin-right: 300px;
 }
-.image {
-    margin-left: 749px;
-    margin-top: 71px;
+.image { 
+    margin-right: 8%;
+    margin-top: 4%;
 }
 
 /* Bas de page */
 footer {
-    margin-top: 150px;
+    margin-top: 15%;
     background-color: #74C69D;
     display: flex; 
-    padding: 30px;
+    padding: 2%;
 }
 .reseau {
-    margin-left: 100px;
+    margin-left: 5%;
 }
 .copiry {
     display: inline-block;
     color: white;
-    margin-left: 1100px;
+    margin-left: 65%;
 }
 
 /* section */
 .texte1 {
-    margin-top: 100px;
+    margin-top: 5%;
     text-align: center;
     width: 25em;
-    margin-left: 720px;
+    margin-left: 40%;
 }
 .partners {
     color: #74C69D;
 }
 .image1 {
-    display:flex;
-    margin-top: 50px;
-
-}
-.logo1 {
-    margin-left: 0px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    margin-right: 20%;
 }
 .logo2 {
-    margin-left: 160px;
-    margin-top: 10px;
+    margin-top: 1%;
 }
-.logo3 {
-    margin-left: 125px;
-}
-.logo4 {
-    margin-left: 150px;
-}
-.logo5 {
-    margin-left: 150px;
-} 
 .img1 {
-    margin-top: 50px;
+    margin-top: 3%;
 }
 .more {
     color: white;
     text-align: center;
     background-color: black;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-right: 850px;
-    margin-left: 850px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-right: 45%;
+    margin-left: 45%;
 }
 .partie3 {
     display: flex;
-    margin-top: 100px;
+    justify-content: space-between;
+    margin-top: 7%;
 }
 .partie3_texte {
     width: 25em;
-    margin-left: 300px;
+    margin-right: 20%;
 }
 .image1 {
-    margin-left: 360px;
+    margin-left: 20%;
 }
 .more1 {
     color: white;
     text-align: center;
     background-color: black;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-right: 250px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-right: 45%;
 }
 .partie4 {
     display: flex;
-    margin-top: 300px;
+    justify-content: space-between;
+    margin-top: 10%;
 }
 .partie4_texte {
     width: 25em;
-    margin-left: 300px;
+    margin-left: 25%;
 }
 .image2 {
-    margin-left: 360px;
+    margin-right: 20%;
 }
 .more2 {
     color: white;
@@ -160,4 +151,11 @@ footer {
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
-  
+
+
+@media screen and (max-width:810px){
+    .M {
+        display: none;
+    } 
+    .icon { display: block;}
+}
