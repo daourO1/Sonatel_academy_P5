@@ -1,0 +1,19 @@
+body{
+    background-color: aqua;
+}
+.en_tete {
+    background-color: rgb(111, 237, 141);
+    color: white;
+    width: 120px;
+    margin-left: 90%;
+}
+.script {
+    display: grid;
+}
+.tableau {
+    display: flex;
+}
+.tete_tab {
+    background-color: rgb(111, 237, 141);
+    text-align: right;
+}
