@@ -10,10 +10,12 @@ body{
 .script {
     display: grid;
 }
-.tableau {
-    display: flex;
-}
+
 .tete_tab {
     background-color: rgb(111, 237, 141);
     text-align: right;
+}
+textarea {
+    width: 20%;
+    padding-top: 25%;
 }
