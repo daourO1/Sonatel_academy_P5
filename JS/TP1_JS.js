@@ -6,31 +6,60 @@ btn.addEventListener("click", btn_add);
 
 // Définition de la fonction "btn_add"
 function btn_add() {
-     
+
   // Créer les éléments HTML
-  let divTableau = document.createElement("div"); // Créer un élément "div" et le stocker dans une variable appelée "divTableau"
-  divTableau.id = "tableau"; // Définir l'attribut "id" de l'élément "div" créé ci-dessus
-  
-  let divTeteTab = document.createElement("div"); // Créer un autre élément "div" et le stocker dans une variable appelée "divTeteTab"
-  divTeteTab.className = "tete_tab"; // Définir la classe de l'élément "div" créé ci-dessus
-  
-  let img1 = document.createElement("img"); // Créer un élément "img" et le stocker dans une variable appelée "img1"
-  img1.src = "edit-regular-24.png"; // Définir l'attribut "src" de l'élément "img" créé ci-dessus
-  img1.alt = "editeur"; // Définir l'attribut "alt" de l'élément "img" créé ci-dessus
-  
-  let img2 = document.createElement("img"); // Créer un autre élément "img" et le stocker dans une variable appelée "img2"
-  img2.src = "trash-regular-24.png"; // Définir l'attribut "src" de l'élément "img" créé ci-dessus
-  img2.alt = "corbeille"; // Définir l'attribut "alt" de l'élément "img" créé ci-dessus
-  
-  let textarea = document.createElement("textarea"); // Créer un élément "textarea" et le stocker dans une variable appelée "textarea"
-  //textarea.cols = "40%"; // Définir l'attribut "cols" de l'élément "textarea" créé ci-dessus
-  //textarea.rows = "25%"; // Définir l'attribut "rows" de l'élément "textarea" créé ci-dessus
-  
+
+
+  let divTableau = document.createElement("div");
+  divTableau.className = "tableau";
+
+  let divTeteTab = document.createElement("div");
+  divTeteTab.className = "tete_tab";
+
+  let img1 = document.createElement("img");
+  img1.src = "edit-regular-24.png";
+  img1.alt = "editeur";
+  img1.id = "editeur"
+
+  let img2 = document.createElement("img");
+  img2.src = "trash-regular-24.png";
+  img2.alt = "corbeille";
+  img2.id = "corbeille"
+
+  let textarea = document.createElement("textarea");
+  //textarea.cols = "40%"; 
+  //textarea.rows = "25%"; 
+
   // Ajouter les éléments à la page
-  divTableau.appendChild(divTeteTab); // Ajouter l'élément "divTeteTab" créé ci-dessus comme un enfant de l'élément "divTableau"
-  divTeteTab.appendChild(img1); // Ajouter l'élément "img1" créé ci-dessus comme un enfant de l'élément "divTeteTab"
-  divTeteTab.appendChild(img2); // Ajouter l'élément "img2" créé ci-dessus comme un enfant de l'élément "divTeteTab"
-  divTableau.appendChild(textarea); // Ajouter l'élément "textarea" créé ci-dessus comme un enfant de l'élément "divTableau"
-  document.body.appendChild(divTableau); // Ajouter l'élé
+  divTableau.appendChild(divTeteTab);
+  divTeteTab.appendChild(img1);
+  divTeteTab.appendChild(img2);
+  divTableau.appendChild(textarea);
+  document.querySelector(".contener").appendChild(divTableau);
 
 }
+
+// Button suprimer
+
+document.addEventListener("click", function () {
+  listTab = document.querySelectorAll(".tableau")
+  listTab.forEach(function (element) {
+    del = element.querySelector('#corbeille')
+    del.addEventListener("click", function () {
+      element.remove()
+    })
+  })
+})
+
+// Button éditeur
+
+document.addEventListener("click", function () {
+  list = document.querySelectorAll(".tableau")
+  list.forEach(function (element) {
+    editor = element.querySelector('#editeur')
+    editor.addEventListener("click", function () {
+      let couleur = document.querySelector("#tete_tab")
+      couleur.style.backgroundColor = "pink"
+    })
+  })
+})

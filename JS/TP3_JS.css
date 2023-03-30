@@ -1,0 +1,70 @@
+.page {
+    display: grid;
+}
+.partie1 {
+    display: grid;
+    background-color: rgb(234, 234, 235);
+    /* padding-top: 50%; */
+}
+.notification {
+    display: flex;
+    background-color: white;
+    /* padding-top: 7%; */
+    margin-top: 7%;
+    margin-bottom: 20%;
+    margin-left: 5%;
+    margin-right: 20%;
+}
+.notif1 {
+    background-color: rgb(55, 140, 55);
+    margin-left: 5%;
+    padding-top: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-right: 20%;
+    border-radius: 15%;
+    
+    
+}
+.notif2 {
+    background: red;
+    margin-left: 1%;
+    padding-top: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-right: 20%;
+    border-radius: 15%;
+    
+}
+.notif3 {
+    background-color: yellow;
+    margin-left: 1%;
+    padding-top: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-right: 20%;
+    border-radius: 15%;
+    
+}
+.notif4 {
+    background-color: rgb(4, 129, 218);
+    margin-left: 1%;
+    padding-top: 3%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-right: 20%;
+    border-radius: 15%;
+}
+.projet {
+    background-color: rgb(55, 140, 55);
+    text-align: center;
+    margin-left: 90%;
+    padding-top: 1%;
+
+}
+.partie2 {
+    background-color: red;
+    margin-top: 9%;
+    padding-top: 2.5%;
+    margin-right: 60%;
+}

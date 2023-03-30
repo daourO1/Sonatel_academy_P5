@@ -1,21 +1,43 @@
-body{
+/* body{
     background-color: aqua;
-}
-.en_tete {
+   
+} */
+button {
     background-color: rgb(111, 237, 141);
     color: white;
-    width: 120px;
-    margin-left: 90%;
+    float: right;
+    width: 8%;
+    height: 80%;
+
+}
+.en_tete {
+    background-color: aqua;
+    width: 100%;
+    height: 300%;
 }
 .script {
     display: grid;
+    background-color: aqua;
 }
 
 .tete_tab {
     background-color: rgb(111, 237, 141);
     text-align: right;
+    /* margin-right: 79.5%; */
 }
 textarea {
-    width: 20%;
-    padding-top: 25%;
+    width: 340px;
+    height: 310px;
+}
+.contener {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tableau {
+    background-color: white;
+    width: 347px;
+    height: 345px;
+    margin-left: 5%;
+    margin-top: 5%;
 }
