@@ -44,3 +44,15 @@ function vers_droite() {
   
   let suivant = document.querySelector(".right")
   suivant.addEventListener('click', vers_droite)
+
+  function vers_gauche() {
+    let gauche = document.getElementsByClassName("deplacer")[0]
+    let selection = document.querySelector(".tableau .selected")
+    if (selection !== null) {
+      gauche.appendChild(selection)
+      selection.classList.remove("selected")
+    }
+  }
+  
+  let suivant = document.querySelector(".right")
+  suivant.addEventListener('click', vers_droite)

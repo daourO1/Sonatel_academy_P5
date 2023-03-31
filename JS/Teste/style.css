@@ -1,0 +1,16 @@
+body{
+    background-color: brown;
+}
+#deplacer{
+   width: 100%; 
+   height: 20px;
+   border: 1px white solid;
+   background-color: aqua;
+}
+
+
+.newClass{
+    width: 100%; 
+   height: 20px;
+   background-color: blue;
+}
