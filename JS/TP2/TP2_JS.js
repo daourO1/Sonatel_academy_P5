@@ -10,7 +10,7 @@ for( i=0; i<para.length; i++) {
     elet.addEventListener("mouseover",function(event){
         event.target.style.backgroundColor = "blue"
         event.target.style.color = "white"
-        event.target,style.cursor = "pointer"
+        event.target.style.cursor = "pointer"
     })
     elet.addEventListener("mouseout",function(event){
         event.target.style.backgroundColor = ""
