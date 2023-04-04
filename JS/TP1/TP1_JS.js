@@ -9,7 +9,6 @@ function btn_add() {
 
   // Créer les éléments HTML
 
-
   let divTableau = document.createElement("div");
   divTableau.className = "tableau";
 
