@@ -1,0 +1,46 @@
+body{
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* width: 100%;
+    height: 100px; */
+}
+
+h2 {
+    font-size: 3em;
+}
+
+.image {
+    text-align: center;
+    color: aliceblue;
+    padding-top: 300px;
+
+}
+
+.chiffre {
+    /* display: inline-block; */
+    margin-left: 40%; 
+    display: flex;
+}
+
+.chiffre2 {
+    margin-left: 4%;
+}
+.chiffre3 {
+    margin-left: 4%;
+}
+.chiffre4 {
+    margin-left: 4%;
+}
+
+#jours,#heures,#minutes,#secondes {
+    font-size: 3em; 
+}
+
+
+h1 {
+    font-size: 10em;
+    opacity: 0.15;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
