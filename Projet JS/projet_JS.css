@@ -3,9 +3,112 @@ body {
 }
 #trello {
     background-color: #403d3e;
-    border-radius: 10%;
+    border-radius: 30px;
     display: flex;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* padding-bottom: 40%; */
+    width: 90%;
+    height: 90%;
 }
+#partie1 {
+    width: 25%;
+    height: 100%;
+}
+#enseignant {
+    margin-left: 25%;
+    margin-top: 30%;
+    width: 50%;
+    border-radius: 30px;
+}
+.icons1 img {
+    color: white;
+}
+#recherche {
+    background-color: #5f5f5f;
+    margin-left: 25%;
+    margin-top: 30%;
+    width: 50%;
+    border-radius: 30px;
+}
+
 #partie2 {
     background-color: #242122;
+    margin-left: 15%;
+    padding-bottom: 40%;
+    /* padding-left: 40%; */
+    width: 75%;
+    height: 250px;
+}
+#planing {
+    color: white;
+    display: flex;
+    margin-left: 1%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+#planing img {
+    width: 5%;
+    height: 2%;
+    margin-left: 80%;
+}
+#horaire {
+    display: flex;
+    background-color: #403d3e;
+    border-radius: 30px;
+}
+.h1 {
+    margin-left: 20%;
+}
+.h {
+    margin-left: 5%;
+}
+#emplois {
+    display: flex;
+    /* width: 100%;
+    height: 20%; */
+    border: 1px solid white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 15px;
+    text-align: justify;
+}
+.jrs {
+    color: white;
+    width: 25%;
+}
+.crs {
+    width: 75%;
+}
+#classe {
+    margin-top: 10%;
+    margin-left: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    float: left; 
+    width: 140%;
+    height: 40%;
+}
+.icons1, .icons2, .icons3, .icons4 {
+    display: flex;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+#classe .enseignant, .salle, .classe, .module {
+    background-color: #9a9a9a;
+    border-radius: 30px; 
+    /* margin-left: 2%;     */
+    width: 170px;
+    height: 20%;
+    margin: 10px 10px 10px 10px;
+}
+/* .classe {
+    margin: ;
+}
+.salle {
+    width: 500%;
+} */
+.texte1, .texte2, .texte3, .texte4 {
+    display: flex;
 }
