@@ -52,8 +52,8 @@ body {
     padding-top: 2%;
     padding-bottom: 2%;
 }
-.next {
-    margin-left: 53%;
+#next {
+    margin-right: 3%;
 }
 #horaire {
     display: flex;

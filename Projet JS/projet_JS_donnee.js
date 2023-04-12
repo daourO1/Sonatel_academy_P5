@@ -125,7 +125,17 @@ module.addEventListener('click', ()=> {
     }
 })
 
-
+let next = document.querySelector("#next");
+let trello = document.querySelector("#trello");
+let partie2 = document.querySelector("#partie2");
+let jrs = document.querySelector(".jrs");
+let crs = document.querySelector(".crs");
+next.addEventListener('click', ()=> {
+    trello.style.backgroundColor = "#b7c3cc";
+    partie2.style.backgroundColor = '#efafb0';
+    jrs.style.backgroundColor = "#ed9b9e";
+    crs.style.backgroundColor = "#c0bfc6";
+})
 
 
 
