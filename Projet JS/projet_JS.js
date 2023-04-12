@@ -23,11 +23,18 @@ for (var jour in tabJours) {
     
     
 }
-const list_enseign = document.getElementById("enseignant");
-const enseign = ['ALy','Mbaye','One','Diouf'];
-for ( i=0 ; i<enseign.length ; i++) {
-    var option = document.createElement("option");
-    option.value="texte";
-    option.textContent = enseign[i];
-    list_enseign.appendChild(option);
-}
+// const list_enseign = document.getElementById("enseignant");
+// const enseign = ['ALy','Mbaye','One','Diouf'];
+// for ( i=0 ; i<enseign.length ; i++) {
+//     var option = document.createElement("option");
+//     option.value="texte";
+//     option.textContent = enseign[i];
+//     list_enseign.appendChild(option);
+// }
+
+
+
+
+
+
+
