@@ -68,7 +68,7 @@ body {
 .h {
     margin-left: 5%;
 }
-#emplois {
+.emplois {
     display: flex;
     border: 1px solid white;
     /* padding-top: 4.56%;
@@ -78,19 +78,31 @@ body {
     border-radius: 30px;
     border-color: #403d3e;
 }
-.jrs {
+.day {
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 15%;
     height: 100%;
-    padding-top: 4.56%;
-    padding-bottom: 4.56%;
+    padding-top: 4.50%;
+    padding-bottom: 4.50%;
+}
+.plus {
+    color: #297629;
+    margin-right: 8%;
+    size: 4em;
 }
 .crs {
     width: 85%;
     background-color: #5e6767;
     height: 100%;
-    padding-top: 5.51%;
-    padding-bottom: 5.51%;
+    padding-top: 5.50%;
+    padding-bottom: 5.50%;
+}
+.add {
+    margin-top: -8%;
+    margin-bottom: -8%;
 }
 #classe {
     margin-top: 10%;
@@ -214,3 +226,59 @@ body {
   .slider.round:before {
     border-radius: 50%;
   } 
+
+  /* CSS Dialogue */
+  dialog {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: #242122;
+    border-color: #242122;
+    border-radius: 30px;
+  }
+  header {
+    height: 15%;
+  }
+  .m {
+    color: white;
+    margin-left: 45%;
+  }
+  .j {
+    color: white;
+  }
+  form {
+    background-color: #5f5f5f;
+    opacity: 50%;
+    height: 70%;   
+  }
+  .cm {
+    padding-top: 7%;
+  }
+  .cm, .ce, .cs, .hd, .hf {
+    margin-left: 20%;
+    margin-top: 2%;
+  }
+  #choix_module, #choix_enseign, #choix_salle, #hDebut, #hFin {
+    margin-left: 25%;
+    width: 30%;
+  }
+  #choix_module {
+    margin-left: 35%;
+  }
+  #choix_enseign {
+    margin-left: 31%;
+  }
+  #choix_salle {
+    margin-left: 38%;
+  }
+  #hDebut {
+    margin-left: 26%;
+  }
+  #hFin {
+    margin-left: 29.6%;
+  }
+  .button {
+    margin-left: 45%;
+  }
+  
+

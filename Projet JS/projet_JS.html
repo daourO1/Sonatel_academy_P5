@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Projet JS</title>
     <link href="projet_JS.css" rel="stylesheet"/>       
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/font-awesome.min.css">
 </head>
 <body>
     
@@ -98,7 +97,40 @@
     
         </div>
     </div>
-    
+    <dialog>
+        <header> 
+            <div class="m">Modal Title</div>
+            <div class="j"></div>
+        </header>
+        <form>
+            <div class="cm">
+                <label for="module">Module</label>
+                <select name="module" id="choix_module"></select> 
+            </div>
+            <div class="ce">
+                <label for="enseignant">Enseignant</label>
+                <select name="enseign" id="choix_enseign"></select> 
+            </div>
+            <div class="cs">
+                <label for="salle">Salle</label>
+                <select name="salle" id="choix_salle"></select>
+            </div>
+            <div class="hd">
+                <label for="heure_debut">Heure de debut</label>
+                <select name="heure_debut" id="hDebut"></select>
+            </div>
+            <div class="hf">
+                <label for="heure_fin">Heure de fin</label>
+                <select name="heure_fin" id="hFin"></select>
+            </div>
+        </form>
+        <footer>
+            <div class="button">
+                <button class="ajout">Ajouter</button>
+                <button class="annul">Annuler</button>
+            </div>
+        </footer>
+    </dialog>
     <script src="projet_JS.js"></script>
     <script src="projet_JS_donnee.js"></script>
 </body>
