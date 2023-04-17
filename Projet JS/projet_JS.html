@@ -74,7 +74,7 @@
                 <div  class="titre"><h1>Planning: <span class="remplir"> </span></h1></div>
                 <div id="next">
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" class="check">
                         <span class="slider round"></span>
                     </label>
                 </div> 
@@ -102,7 +102,20 @@
             <div class="m">Modal Title</div>
             <div class="j"></div>
         </header>
-        <form>
+        <form id="form">
+
+            <div class="cl">
+                <label for="classe">Module</label>
+                <select name="classe" id="choix_classe"></select> 
+            </div>
+            <div class="effect_cl">
+                <label for="effect_classe">Module</label>
+                <select name="effect_classe" id="choix_effect_classe"></select> 
+            </div>
+            <div class="cm_ce">
+                <label for="modul_enseign">Module</label>
+                <select name="modul_enseign" id="modul_enseign"></select> 
+            </div>
             <div class="cm">
                 <label for="module">Module</label>
                 <select name="module" id="choix_module"></select> 
@@ -110,6 +123,10 @@
             <div class="ce">
                 <label for="enseignant">Enseignant</label>
                 <select name="enseign" id="choix_enseign"></select> 
+            </div>
+            <div class="c_es">
+                <label for="c_effSalle">Enseignant</label>
+                <select name="c_effSalle" id="c_effSalle"></select> 
             </div>
             <div class="cs">
                 <label for="salle">Salle</label>

@@ -63,10 +63,10 @@ body {
     padding-bottom: 1%;
 }
 .h1 {
-    margin-left: 20%;
+    margin-left: 17%;
 }
 .h {
-    margin-left: 5%;
+    margin-left: 6%;
 }
 .emplois {
     display: flex;
@@ -103,6 +103,7 @@ body {
 .add {
     margin-top: -8%;
     margin-bottom: -8%;
+   text-align: center;
 }
 #classe {
     margin-top: 10%;
@@ -280,5 +281,7 @@ body {
   .button {
     margin-left: 45%;
   }
-  
+  .cl, .effect_cl, .cm_ce {
+    display: none;
+  }
 
