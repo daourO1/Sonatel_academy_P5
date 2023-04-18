@@ -1,12 +1,11 @@
 let base = localStorage;
-
 let base_donnee = [];
 
 //donnee JSON
 const Enseignant = [
-    { idEns: '001', nom:"Aly",modules: ['mod003', 'mod005']},
-    { idEns: '002', nom:"Mbaye",modules : ['mod005','mod002']},
-    { idEns: '003', nom:"One",modules : ['mod001']}
+    { idEns: '001', nom:"Aly",modules: ['mod02', 'mod05', 'mod06']},
+    { idEns: '002', nom:"Mbaye",modules : ['mod06','mod002']},
+    { idEns: '003', nom:"Balla",modules : ['mod01','mod03']}
 ]
 
 const Salles = [
@@ -16,17 +15,21 @@ const Salles = [
 ]
 
 const Classes = [
-    { idClass: 'C1', nomClass: "L3 SID", effClass: "29"},
-    { idClass: 'C2', nomClass: "L3 SID", effClass: "40"},
-    { idClass: 'C3', nomClass: "L2 MPCI", effClass: "60"}
+    { idClass: 'C1', nomClass: "L2 GLRS A", effClass: "29"},
+    { idClass: 'C2', nomClass: "L2 GLRS A", effClass: "40"},
+    { idClass: 'C3', nomClass: "L2 ETSE", effClass: "60"},
+    { idClass: 'C4', nomClass: "L1 1", effClass: "60"},
+    { idClass: 'C5', nomClass: "IAGE B", effClass: "60"},
+    { idClass: 'C6', nomClass: "L2 CDSD", effClass: "60"}
 ]
 
 const Modules = [
-    { idModule: 'mod01', nomModule: "Math"},
+    { idModule: 'mod01', nomModule: "PHP"},
     { idModule: 'mod02', nomModule: "Python"},
     { idModule: 'mod03', nomModule: "Algo"},
     { idModule: 'mod04', nomModule: "Analyse"},
-    { idModule: 'mod05', nomModule: "Java"}
+    { idModule: 'mod05', nomModule: "JavaScript"},
+    { idModule: 'mod06', nomModule: "LC"}
 ]
 
 const Heures = [
@@ -34,7 +37,7 @@ const Heures = [
 ]
 
 const Cours = [
-    {nomModule: "", nom: "", modules: '', nomSalle: '', effSalle: '', nomClass: "", effClass: '', hDebut: "", hFin: "",}
+    {nomModule: "", nom: "", modules: '', nomSalle: '', effSalle: '', nomClass: "", effClass: '', hDebut: "", hFin: ""}
 ]
 
 // const link = [
@@ -50,7 +53,7 @@ base.setItem('Salles',JSON.stringify(Salles));
 base.setItem('Classes',JSON.stringify(Classes));
 base.setItem('Modules',JSON.stringify(Modules));
 base.setItem('Heures',JSON.stringify(Heures));
-
+// base.setItem('Cours',JSON.stringify(Cours));
 
 // Récupérer les donnees et convertir les donnees en objet stocker dans base_donnee
 const recup_donnee = function (table) {
@@ -65,7 +68,7 @@ function recup_element (element,name) {
     let datas = JSON.parse(data)
     // console.log(datas[name])
     let tab_datas = []
-    for (elm in datas) {Cours.hDebut
+    for (elm in datas) {
         tab_datas.push(datas[elm][name])
     }
     return tab_datas
@@ -199,10 +202,11 @@ let choix_salle = document.querySelector("#choix_salle");
 let hDebut = document.querySelector("#hDebut");
 let hFin = document.querySelector("#hFin");
 let j = document.querySelector(".j")
-
+var id_crs;
 function ajout_plus () {
     addition.forEach((element,i) => {
         element.addEventListener('click', ()=> {
+            id_crs=element.parentElement.parentElement.id
             j.innerHTML = tabJours[i];
             dialogue.showModal();
             let tableau = recup_element ("Modules","nomModule")
@@ -225,15 +229,15 @@ function ajout_plus () {
                 option.textContent = tableau2[i];
                 choix_enseign.appendChild(option);
             }
-            let tableau1 = recup_element ("Salles","nomSalle")
-            choix_salle.innerHTML = '';
+            let tableau1 = recup_element ("Salles","effSalle")
+            c_effSalle.innerHTML = '';
             var zone_text = document.createElement('option');
             zone_text.textContent = "Choisir une Salle";
-            choix_salle.appendChild(zone_text);
+            c_effSalle.appendChild(zone_text);
             for ( i=0 ; i<tableau1.length ; i++) {
                 var option = document.createElement("option");
                 option.textContent = tableau1[i];
-                choix_salle.appendChild(option);
+                c_effSalle.appendChild(option);
             }
             let tableau3 = recup_element ("Heures","h")
             hDebut.innerHTML = '';
@@ -250,7 +254,7 @@ function ajout_plus () {
             var zone_text = document.createElement('option');
             zone_text.textContent = "Choisir une Heure";
             hFin.appendChild(zone_text);
-            for ( i=0 ; i<tableau.length ; i++) {
+            for ( i=0 ; i<tableau4.length ; i++) {
                 var option = document.createElement("option");
                 option.textContent = tableau4[i];
                 hFin.appendChild(option);
@@ -268,9 +272,9 @@ annul.addEventListener('click', ()=> {
 })
 
 // Evenement change sur le formulaire pour réinicialiser les donnees
-form.addEventListener('change', (event)=> {
-    c_effSalle.innerHTML = recup_element ("Classes","effClass")
-})
+// form.addEventListener('change', (event)=> {
+//     c_effSalle.innerHTML = recup_element ("Classes","effClass")
+// })
 
 // fonction pour récuperer une valeur
 function recup_valeur_attribut(objet,element,name) {
@@ -286,55 +290,55 @@ function recup_valeur_attribut(objet,element,name) {
 }
 
 // Ajouter dans emplois du temps
-function recuperer_saisi() {
+function recuperer_saisi(table) {
     let tabCours = [];
     list_enseign.addEventListener('change' ,(event)=> {
-        const valeur = event.target.value;
-        Cours.nomClass = valeur;
-        tabCours.push(Cours.nomClass)
+        const valeur1 = event.target.value;
+        table.nomClass = valeur1;
+        // tabCours.push(Cours.nomClass)
     })
     choix_effect_classe.addEventListener('change' ,(event)=> {
         
-        const valeur = event.target.value;
-        Cours.effClass = valeur;
-        tabCours.push(Cours.effClass)
+        const valeur2 = event.target.value;
+        Cours.effClass = valeur2;
+        // tabCours.push(Cours.effClass)
     })
     modul_enseign.addEventListener('change' ,(event)=> {
-        const valeur = event.target.value;
-        Cours.modules = valeur;
-        tabCours.push(Cours.modules)
+        const valeur3 = event.target.value;
+        Cours.modules = valeur3;
+        // tabCours.push(Cours.modules)
     })
     choix_module.addEventListener('change' ,(event)=> {
-        const valeur = event.target.value;
-        Cours.nomModule = valeur;
-        tabCours.push(Cours.nomModule)
+        const valeur4 = event.target.value;
+        Cours.nomModule = valeur4;
+        // tabCours.push(Cours.nomModule)
     })
     c_effSalle.addEventListener('change' ,(event)=> {
-        const valeur1 = event.target.value;
-        Cours.effSalle = valeur1;
-        tabCours.push(Cours.effSalle)
+        const valeur5 = event.target.value;
+        Cours.effSalle = valeur5;
+        // tabCours.push(Cours.effSalle)
     })
     choix_enseign.addEventListener('change' ,(event)=> {
-        const valeur1 = event.target.value;
-        Cours.nom = valeur1;
-        tabCours.push(Cours.nom)
+        const valeur6 = event.target.value;
+        Cours.nom = valeur6;
+        // tabCours.push(Cours.nom)
     })
     choix_salle.addEventListener('change' ,(event)=> {
-        const valeur2 = event.target.value;
-        Cours.nomSalle = valeur2;
-        tabCours.push(Cours.nomSalle)
+        const valeur7 = event.target.value;
+        Cours.nomSalle = valeur7;
+        // tabCours.push(Cours.nomSalle)
     })
     hDebut.addEventListener('change' ,(event)=> {
-        const valeur3 = event.target.value;
-        Cours.hDebut = valeur3;
-        tabCours.push(Cours.hDebut)
+        const valeur8 = event.target.value;
+        Cours.hDebut = valeur8;
+        // tabCours.push(Cours.hDebut)
     })
     hFin.addEventListener('change' ,(event)=> {
-        const valeur4 = event.target.value;
-        Cours.hFin = valeur4;
-        tabCours.push(Cours.hFin)
+        const valeur9 = event.target.value;
+        Cours.hFin = valeur9
+        // tabCours.push(Cours.hFin)
     })
-
+    tabCours.push(Cours);
     base.setItem('Cours',JSON.stringify(tabCours));
 
 }
@@ -349,7 +353,7 @@ function creer_cours(nomModule, nom, nomSalle, nomClass, hDebut, hFin) {
         const valE1 = document.createTextNode(Cours.nom);
         valE.appendChild(valE1);
         add.appendChild(valE);
-        var valM = document.createElement("h1");
+        var valM = document.createElement("h3");
         const valM1 = document.createTextNode(Cours.nomModule);
         valM.appendChild(valM1);
         add.appendChild(valM);
@@ -357,13 +361,14 @@ function creer_cours(nomModule, nom, nomSalle, nomClass, hDebut, hFin) {
         const valS1 = document.createTextNode(Cours.effSalle);
         valS.appendChild(valS1);
         add.appendChild(valS);
-        a =document.querySelector('.j').textContent
-        pos = tabJours.indexOf(a)+1
-        // console.log(pos)
-        crs=document.querySelector(`.emplois:nth-child(${pos}) > .crs`)
-        crs.appendChild(add);
+        // a =document.querySelector('.j').textContent
+        // pos = tabJours.indexOf(a)+1
+        // // console.log(pos)
+        // crs=document.querySelector(`.emplois:nth-child(${pos}) > .crs`)
+        console.log(ajout.parentElement)
+        document.getElementById(id_crs).lastElementChild.appendChild(add);
         dialogue.close();
-        add.style.backgroundColor = 'red';
+        add.style.backgroundColor = '#97c6d8';
         duree = (Cours.hFin-Cours.hDebut)*10;
         marge = (Cours.hDebut-8)*10;
         add.style.width = duree + "%";

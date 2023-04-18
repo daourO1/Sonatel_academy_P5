@@ -103,7 +103,8 @@ body {
 .add {
     margin-top: -8%;
     margin-bottom: -8%;
-   text-align: center;
+    text-align: center;
+    border-radius: 30px;
 }
 #classe {
     margin-top: 10%;
@@ -255,11 +256,11 @@ body {
   .cm {
     padding-top: 7%;
   }
-  .cm, .ce, .cs, .hd, .hf {
+  .cm, .ce, .c_es, .hd, .hf {
     margin-left: 20%;
     margin-top: 2%;
   }
-  #choix_module, #choix_enseign, #choix_salle, #hDebut, #hFin {
+  #choix_module, #choix_enseign, #c_effSalle, #hDebut, #hFin {
     margin-left: 25%;
     width: 30%;
   }
@@ -269,7 +270,7 @@ body {
   #choix_enseign {
     margin-left: 31%;
   }
-  #choix_salle {
+  #c_effSalle {
     margin-left: 38%;
   }
   #hDebut {
@@ -281,7 +282,7 @@ body {
   .button {
     margin-left: 45%;
   }
-  .cl, .effect_cl, .cm_ce {
+  .cl, .effect_cl, .cm_ce, .cs {
     display: none;
   }
 

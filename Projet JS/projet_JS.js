@@ -27,6 +27,7 @@ for (var jour in tabJours) {
     emplois.appendChild(day);
     emplois.appendChild(cours);
     emplois.setAttribute("class","emplois")
+    emplois.id = tabJours[jour];
     jours_cours.appendChild(emplois);
     
 }
