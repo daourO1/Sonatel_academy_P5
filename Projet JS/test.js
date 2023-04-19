@@ -32,14 +32,20 @@ const Modules = [
     { idModule: 'mod06', nomModule: "LC"}
 ]
 
-
-const tabCours = [
-    {"nomModule":"PHP","nom":"Aly","nomSalle":"","effSalle":"30","hDebut":10,"hFin":12}
-]
-
 const Heures = [
     {h: '8'},{h: '9'},{h: '10'},{h: '11'},{h: '12'},{h: '13'},{h: '14'},{h: '15'},{h: '16'},{h: '17'}
 ]
+
+const Cours = [
+    {nomModule: "", nom: "", modules: '', nomSalle: '', effSalle: '', nomClass: "", effClass: '', hDebut: "", hFin: ""}
+]
+
+// const link = [
+//     {nom: "" },
+//     {nomSalle: "" },
+//     {nomClass: "" },
+//     {nomModule: "" }
+// ]
 
 // Stocker les chaînes JSON dans le localStorage
 base.setItem('Enseignant',JSON.stringify(Enseignant));
@@ -47,10 +53,7 @@ base.setItem('Salles',JSON.stringify(Salles));
 base.setItem('Classes',JSON.stringify(Classes));
 base.setItem('Modules',JSON.stringify(Modules));
 base.setItem('Heures',JSON.stringify(Heures));
-if (localStorage.getItem('tabCours').length==0) {
-    base.setItem('tabCours',JSON.stringify(tabCours)); 
-}
-
+// base.setItem('Cours',JSON.stringify(Cours));
 
 // Récupérer les donnees et convertir les donnees en objet stocker dans base_donnee
 const recup_donnee = function (table) {
@@ -72,21 +75,6 @@ function recup_element (element,name) {
 }
 
 const list_enseign = document.getElementById("enseignant");
-
-let addition = document.querySelectorAll('.plus');
-let dialogue = document.querySelector('dialog');
-let form = document.querySelector('#form')
-let choix_classe = document.querySelector("#choix_classe");
-let choix_effect_classe = document.querySelector("#choix_effect_classe");
-let modul_enseign = document.querySelector("#modul_enseign");
-let choix_module = document.querySelector("#choix_module");
-let choix_enseign = document.querySelector("#choix_enseign");
-let c_effSalle = document.querySelector("#c_effSalle");
-let choix_salle = document.querySelector("#choix_salle");
-let hDebut = document.querySelector("#hDebut");
-let hFin = document.querySelector("#hFin");
-let j = document.querySelector(".j")
-var id_crs;
 
 // Ajoiter la selection à coté de planning
 let planing = document.getElementById("planing");
@@ -156,8 +144,8 @@ classe.addEventListener('click', ()=> {
         list_enseign.appendChild(option);
     }
     ajout_plus()
-    // recuperer_saisi()
-    // creer_cours()
+    recuperer_saisi()
+    creer_cours()
 })
 
 let module = document.querySelector(".module")
@@ -188,17 +176,33 @@ check.addEventListener('change', ()=> {
     if (check.checked){
         trello.style.backgroundColor = "#b7c3cc";
         partie2.style.backgroundColor = '#efafb0';
+        // jrs.style.backgroundColor = "#ed9b9e";
+        // crs.style.backgroundColor = "#c0bfc6";
     }
     else {
         trello.style.backgroundColor = "#403d3e";
         partie2.style.backgroundColor = '#242122';
+        // jrs.style.backgroundColor = "#ed9b9e";
         crs.style.backgroundColor = "#5e6767";
     }
         
 })
 
 // Ajout element dans emplois du temps
-
+let addition = document.querySelectorAll('.plus');
+let dialogue = document.querySelector('dialog');
+let form = document.querySelector('#form')
+let choix_classe = document.querySelector("#choix_classe");
+let choix_effect_classe = document.querySelector("#choix_effect_classe");
+let modul_enseign = document.querySelector("#modul_enseign");
+let choix_module = document.querySelector("#choix_module");
+let choix_enseign = document.querySelector("#choix_enseign");
+let c_effSalle = document.querySelector("#c_effSalle");
+let choix_salle = document.querySelector("#choix_salle");
+let hDebut = document.querySelector("#hDebut");
+let hFin = document.querySelector("#hFin");
+let j = document.querySelector(".j")
+var id_crs;
 function ajout_plus () {
     addition.forEach((element,i) => {
         element.addEventListener('click', ()=> {
@@ -212,7 +216,6 @@ function ajout_plus () {
             choix_module.appendChild(zone_text);
             for ( i=0 ; i<tableau.length ; i++) {
                 var option = document.createElement("option");
-                option.setAttribute("value",tableau[i]);
                 option.textContent = tableau[i];
                 choix_module.appendChild(option);
             }
@@ -223,10 +226,9 @@ function ajout_plus () {
             choix_enseign.appendChild(zone_text);
             for ( i=0 ; i<tableau2.length ; i++) {
                 var option = document.createElement("option");
-                option.setAttribute("value",tableau2[i]);
                 option.textContent = tableau2[i];
                 choix_enseign.appendChild(option);
-            }         
+            }
             let tableau1 = recup_element ("Salles","effSalle")
             c_effSalle.innerHTML = '';
             var zone_text = document.createElement('option');
@@ -234,7 +236,6 @@ function ajout_plus () {
             c_effSalle.appendChild(zone_text);
             for ( i=0 ; i<tableau1.length ; i++) {
                 var option = document.createElement("option");
-                option.setAttribute("value",tableau1[i]);
                 option.textContent = tableau1[i];
                 c_effSalle.appendChild(option);
             }
@@ -245,7 +246,6 @@ function ajout_plus () {
             hDebut.appendChild(zone_text);
             for ( i=0 ; i<tableau3.length ; i++) {
                 var option = document.createElement("option");
-                option.setAttribute("value",tableau3[i]);
                 option.textContent = tableau3[i];
                 hDebut.appendChild(option);
             }
@@ -256,7 +256,6 @@ function ajout_plus () {
             hFin.appendChild(zone_text);
             for ( i=0 ; i<tableau4.length ; i++) {
                 var option = document.createElement("option");
-                option.setAttribute("value",tableau4[i]);
                 option.textContent = tableau4[i];
                 hFin.appendChild(option);
             }
@@ -272,6 +271,11 @@ annul.addEventListener('click', ()=> {
     dialogue.close();
 })
 
+// Evenement change sur le formulaire pour réinicialiser les donnees
+// form.addEventListener('change', (event)=> {
+//     c_effSalle.innerHTML = recup_element ("Classes","effClass")
+// })
+
 // fonction pour récuperer une valeur
 function recup_valeur_attribut(objet,element,name) {
     let data = base.getItem(objet)
@@ -286,74 +290,92 @@ function recup_valeur_attribut(objet,element,name) {
 }
 
 // Ajouter dans emplois du temps
-function recuperer_saisi() {
-    // let tabCours = [];
-    // Récupération des options sélectionnées
-    var recupClass = list_enseign.options[list_enseign.selectedIndex].value;
-    // console.log(choix_effect_classe)
-    // console.log(choix_effect_classe.selectedIndex)
-    // const recupEffectClass = choix_effect_classe.options[choix_effect_classe.selectedIndex].value;
-    // const recupModEnseign = modul_enseign.options[modul_enseign.selectedIndex].value;
-    var recupModule = choix_module.value;
-    var recupEffectSalle = c_effSalle.value;
-    var recupEnseign = choix_enseign.value;
-    var recupSalle = choix_salle.value;
-    var recupHeureDebut = hDebut.value;
-    var recupHeureFin = hFin.value;
+function recuperer_saisi(table) {
+    let tabCours = [];
+    list_enseign.addEventListener('change' ,(event)=> {
+        const valeur1 = event.target.value;
+        table.nomClass = valeur1;
+        // tabCours.push(Cours.nomClass)
+    })
+    choix_effect_classe.addEventListener('change' ,(event)=> {
+        
+        const valeur2 = event.target.value;
+        Cours.effClass = valeur2;
+        // tabCours.push(Cours.effClass)
+    })
+    modul_enseign.addEventListener('change' ,(event)=> {
+        const valeur3 = event.target.value;
+        Cours.modules = valeur3;
+        // tabCours.push(Cours.modules)
+    })
+    choix_module.addEventListener('change' ,(event)=> {
+        const valeur4 = event.target.value;
+        Cours.nomModule = valeur4;
+        // tabCours.push(Cours.nomModule)
+    })
+    c_effSalle.addEventListener('change' ,(event)=> {
+        const valeur5 = event.target.value;
+        Cours.effSalle = valeur5;
+        // tabCours.push(Cours.effSalle)
+    })
+    choix_enseign.addEventListener('change' ,(event)=> {
+        const valeur6 = event.target.value;
+        Cours.nom = valeur6;
+        // tabCours.push(Cours.nom)
+    })
+    choix_salle.addEventListener('change' ,(event)=> {
+        const valeur7 = event.target.value;
+        Cours.nomSalle = valeur7;
+        // tabCours.push(Cours.nomSalle)
+    })
+    hDebut.addEventListener('change' ,(event)=> {
+        const valeur8 = event.target.value;
+        Cours.hDebut = valeur8;
+        // tabCours.push(Cours.hDebut)
+    })
+    hFin.addEventListener('change' ,(event)=> {
+        const valeur9 = event.target.value;
+        Cours.hFin = valeur9
+        // tabCours.push(Cours.hFin)
+    })
+    tabCours.push(Cours);
+    base.setItem('Cours',JSON.stringify(tabCours));
 
-     // Création d'un objet avec les options sélectionnées
-    var Cours = {
-        nomModule: recupModule, 
-        nom: recupEnseign, 
-        // modules: recupModEnseign, 
-        nomSalle: recupSalle, 
-        effSalle:  c_effSalle.value, 
-        // nomClass: recupClass, 
-        // effClass: recupEffectClass, 
-        hDebut: parseInt(recupHeureDebut), 
-        hFin: parseInt(recupHeureFin)
-    }
-    console.log(Cours)
-    // Ajout de l'objet dans le localStorage
-    var tab = JSON.parse(localStorage.getItem('tabCours'))
-    tab.push(Cours);
-    localStorage.setItem("tabCours", JSON.stringify(tab));
-    return Cours
-
-    // Creer cours
-   
 }
-let ajout = document.querySelector(".ajout");
-ajout.addEventListener('click', ()=> {
-    var Cours=recuperer_saisi();
-    let add = document.createElement("div");
-    add.className = "add";
-    var valE = document.createElement("p");
-    valE.className = "valE"
-    const valE1 = document.createTextNode(Cours.nom);
-    valE.appendChild(valE1);
-    add.appendChild(valE);
-    var valM = document.createElement("h3");
-    const valM1 = document.createTextNode(Cours.nomModule);
-    valM.appendChild(valM1);
-    add.appendChild(valM);
-    var valS = document.createElement("p");
-    const valS1 = document.createTextNode(Cours.effSalle);
-    valS.appendChild(valS1);
-    add.appendChild(valS);
-    console.log(ajout.parentElement)
-    document.getElementById(id_crs).lastElementChild.appendChild(add);
-    add.style.backgroundColor = '#97c6d8';
-    // var colors = ['#C44C51','#8CC6D7','#FFDA8C','#006D80','#BDA44D','#3C2000'];
 
-    // var random_color = colors[Math.floor(Math.random() * colors.length)];
+function creer_cours(nomModule, nom, nomSalle, nomClass, hDebut, hFin) {
+    let ajout = document.querySelector(".ajout");
+    ajout.addEventListener('click', ()=> {
+        let add = document.createElement("div");
+        add.className = "add";
+        var valE = document.createElement("p");
+        valE.className = "valE"
+        const valE1 = document.createTextNode(Cours.nom);
+        valE.appendChild(valE1);
+        add.appendChild(valE);
+        var valM = document.createElement("h3");
+        const valM1 = document.createTextNode(Cours.nomModule);
+        valM.appendChild(valM1);
+        add.appendChild(valM);
+        var valS = document.createElement("p");
+        const valS1 = document.createTextNode(Cours.effSalle);
+        valS.appendChild(valS1);
+        add.appendChild(valS);
+        // a =document.querySelector('.j').textContent
+        // pos = tabJours.indexOf(a)+1
+        // // console.log(pos)
+        // crs=document.querySelector(`.emplois:nth-child(${pos}) > .crs`)
+        console.log(ajout.parentElement)
+        document.getElementById(id_crs).lastElementChild.appendChild(add);
+        dialogue.close();
+        add.style.backgroundColor = '#97c6d8';
+        duree = (Cours.hFin-Cours.hDebut)*10;
+        marge = (Cours.hDebut-8)*10;
+        add.style.width = duree + "%";
+        add.style.marginLeft = marge + "%";
+        
+    })
 
-    // add.css('background-color', random_color);
-    duree = (Cours.hFin-Cours.hDebut)*10;
-    marge = (Cours.hDebut-8)*10;
-    add.style.width = duree + "%";
-    add.style.marginLeft = marge + "%";
-    dialogue.close();
-    
-})
+}
+
 
