@@ -143,3 +143,21 @@ WHERE type = 'publicité';
 -- - ROUND
 -- Donner le numéro et le nom des contribuables qui ont individuellement payé au
 -- total plus de 500.000F d’amende pour des déclarations de spectacles.
+SELECT contribuable.ncont, contribuable.nom, ROUND(SUM(amende.montant), 2) AS total_amende
+FROM contribuable
+INNER JOIN payer_amende ON contribuable.ncont = payer_amende.ncont
+INNER JOIN amende ON payer_amende.namende = amende.namende
+INNER JOIN declaration ON payer_amende.ncont = declaration.ncont
+WHERE declaration.libelle = 'spectacle'
+GROUP BY contribuable.ncont, contribuable.nom
+HAVING total_amende > 500000;
+
+-- WHERE filtre les déclarations de spectacles, 
+-- HAVING sélectionne les contribuables dont le montant total de l'amende dépasse 500 000F. 
+-- a fonction ROUND est utilisée pour arrondir le montant total de l'amende à deux décimales.
+
+
+
+
+
+
