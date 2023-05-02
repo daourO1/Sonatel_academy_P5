@@ -1,14 +1,17 @@
-sudo mysql
+sudo -u postgres psql
 
 --  EXPORTER ET RESTAURER UN BD
 -- Faites un import de la BD “odc_recette_cours.sql”
-CREATE DATABASE odc_recette_cours;
 
-use odc_recette_cours;
+-- Creer une base de donnée
+create database odc_recette_cours;
 
-source /home/daour/Sonatel_academy_P5/007 Conception et administration d_une base de données SQL/Projet_SQL/odc_recette_cours.sql;
+psql odc_recette_cours < odc_recette_cours.sql
 
 SHOW TABLES;
+
+-- Pour voir les bases
+\l
 
 DESCRIBE amende;
 DESCRIBE contribuable;
