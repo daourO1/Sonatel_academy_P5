@@ -154,10 +154,57 @@ HAVING total_amende > 500000;
 
 -- WHERE filtre les déclarations de spectacles, 
 -- HAVING sélectionne les contribuables dont le montant total de l'amende dépasse 500 000F. 
--- a fonction ROUND est utilisée pour arrondir le montant total de l'amende à deux décimales.
+-- ROUND est utilisée pour arrondir le montant total de l'amende à deux décimales.
+
+-- -DISTINCT
+-- Donner le numéro et le nom des contribuables qui n’ont jamais payé d’amende
+SELECT DISTINCT contribuable.ncont, contribuable.nom
+FROM contribuable
+LEFT JOIN payer_amende ON contribuable.ncont = payer_amende.ncont
+WHERE payer_amende.ncont is NULL;
 
 
+-- -COUNT
+-- Donner le numéro et le nom des contribuables qui ont individuellement payé au
+-- total plus de quatre (4) amendes
+SELECT contribuable.ncont, contribuable.nom
+FROM contribuable
+INNER JOIN payer_amende ON contribuable.ncont = payer_amende.ncont
+GROUP BY contribuable.ncont, contribuable.nom;
+HAVING COUNT(pa.namende) > 4;
 
 
+-- -LIMIT
+-- Donner le numéro et le nom du contribuable qui a payé plus de taxe
+SELECT contribuable.ncont, contribuable.nom, SUM(taxes.montant) AS total_taxes
+FROM contribuable 
+INNER JOIN payer_taxe pt ON contribuable.ncont = payer_taxe.ncont
+INNER JOIN taxes ON payer_taxe.ntaxe = taxes.ntaxe
+GROUP BY contribuable.ncont, contribuable.nom
+ORDER BY total_taxes DESC
+LIMIT 1;
 
 
+-- -LIKE %% (B%A)
+-- Donner les informations des contribuables qui habitent paris
+SELECT *
+FROM contribuable
+WHERE adr LIKE '% Paris %' AND adr LIKE '%B%A';
+
+-- IN & NOT IN
+-- Donner le numéro et le nom des contribuables qui n’ont jamais payé d’amende.
+SELECT ncont, nom
+FROM contribuable
+WHERE ncont NOT IN (SELECT DISTINCT ncont FROM payer_amende);
+
+
+On a 8 tables:
+amende (namende,libelle,montant),
+contribuable (ncont,nom,adr,tel),
+declaration (ndec,ncont,libelle,date),
+migration_version (version,axecuted_at),
+payer_amende (ncont,namende,date),
+payer_taxe (ncont,ntaxe,nquit,date),
+quittance (nquit,ncont,date,libelle),
+taxes (ntaxe,type,montant)
+-LIMIT

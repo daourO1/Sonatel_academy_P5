@@ -1,18 +1,30 @@
-sudo -u postgres psql
+sudo systemctl start postgres.service
 
+sudo -i -u postgres
+
+-- Creer un utilisateur
+createruser --interactive
+
+-- Acceder à postgresql
+psql -d postgres
 --  EXPORTER ET RESTAURER UN BD
 -- Faites un import de la BD “odc_recette_cours.sql”
 
 -- Creer une base de donnée
 create database odc_recette_cours;
-
-psql odc_recette_cours < odc_recette_cours.sql
-
-SHOW TABLES;
+-- voir les bases
+\l
+q
+-- Pour acceder à la base creée
+\c odc_recette_cours
+-- Importer la base
+\i source
+-- Pour voir les tables
+\dt
 
 -- Pour voir les bases
-\l
 
+\d = describe
 DESCRIBE amende;
 DESCRIBE contribuable;
 DESCRIBE declaration;
